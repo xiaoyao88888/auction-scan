@@ -1,0 +1,40 @@
+name: auction-scan
+on:
+  schedule:
+    # 北京时间 09:26 = UTC 01:26, 周一至周五
+    - cron: "26 1 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Write MCP config
+        run: printf '%s' "${{ secrets.WUDAO_MCP_JSON }}" > .mcp.json
+
+      - name: Run daily scan
+        env:
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
+          ANTHROPIC_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_SONNET_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: "deepseek-v4-pro"
+          ANTHROPIC_DEFAULT_OPUS_MODEL: "deepseek-v4-pro[1m]"
+          MAX_MCP_OUTPUT_TOKENS: "25000"
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          DATE_STR: $(TZ=Asia/Shanghai date +%Y-%m-%d)
+        run: claude -p "$(cat prompt.md)" --permission-mode bypassPermissions --output-format text
