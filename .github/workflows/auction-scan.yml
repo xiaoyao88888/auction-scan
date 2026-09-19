@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   scan:
@@ -38,3 +38,17 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           DATE_STR: $(TZ=Asia/Shanghai date +%Y-%m-%d)
         run: claude -p "$(cat prompt.md)" --permission-mode bypassPermissions --output-format text
+
+      - name: Commit recommendation record
+        run: |
+          if [ -f /tmp/record.json ]; then
+            mkdir -p push_history
+            cp /tmp/record.json "push_history/$(TZ=Asia/Shanghai date +%Y%m%d).json"
+            git config user.name "scan-bot"
+            git config user.email "scan-bot@users.noreply.github.com"
+            git add push_history/
+            git commit -m "record: $(TZ=Asia/Shanghai date +%Y%m%d) recommendations" || echo "no changes"
+            git push
+          else
+            echo "no record.json, skip commit"
+          fi
