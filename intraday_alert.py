@@ -51,18 +51,25 @@ def fetch_quotes(codes: list) -> dict:
 
 # ---------- 记录与状态 ----------
 def load_records() -> list:
-    """取最近3个交易日的推送记录,合并股票列表,每只附带 refPrice 与推送日期"""
+    """取最近3个交易日的推送记录,按代码合并去重(后写入的覆盖,watchBuy 标志取或)"""
     files = sorted(glob.glob("push_history/*.json"))[-3:]
-    stocks = []
+    merged = {}
     for fp in files:
         try:
             d = json.load(open(fp, encoding="utf-8"))
         except Exception:
             continue
         for s in d.get("stocks", []):
+            code = s.get("code")
+            if not code:
+                continue
             s["_date"] = d.get("date", fp[-12:-5])
-            stocks.append(s)
-    return stocks
+            if code in merged:
+                merged[code]["watchBuy"] = merged[code].get("watchBuy") or s.get("watchBuy")
+                merged[code].update(s)
+            else:
+                merged[code] = s
+    return list(merged.values())
 
 
 def load_state() -> dict:
