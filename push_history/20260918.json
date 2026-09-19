@@ -1,0 +1,9 @@
+{
+  "date": "2026-09-18",
+  "stocks": [
+    {"code": "002584", "name": "西陇科学", "grade": "S", "refPrice": 9.72, "prevClose": 9.52, "signals": "尾抢+4.52%+量比44.57+主线芯片", "note": "弱转强标准形态,回踩不破竞价价才拿"},
+    {"code": "603248", "name": "锡华科技", "grade": "A", "refPrice": 22.55, "prevClose": 22.34, "signals": "平开+尾抢+强度225.69", "note": "4板高标,高位博弈,轻仓"},
+    {"code": "002137", "name": "实益达", "grade": "A", "refPrice": 8.53, "prevClose": 8.55, "signals": "平开+尾抢+4.02%+量比23.6+半导体", "note": "半导体主线,承接待验"},
+    {"code": "003001", "name": "中岩大地", "grade": "A", "refPrice": 20.69, "prevClose": 20.32, "signals": "尾抢+4.02%+量比35+核电", "note": "昨2板,核电/西藏水电"}
+  ]
+}
