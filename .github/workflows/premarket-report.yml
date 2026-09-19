@@ -1,0 +1,47 @@
+name: premarket-report
+on:
+  schedule:
+    # 北京时间 09:00 = UTC 01:00, 周一至周五
+    - cron: "0 1 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install -q akshare pandas mcp
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Write MCP config
+        run: printf '%s' "${{ secrets.PREMARKET_MCP_JSON }}" > .mcp.json
+
+      - name: Run premarket report
+        env:
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
+          ANTHROPIC_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_SONNET_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: "deepseek-v4-pro"
+          ANTHROPIC_DEFAULT_OPUS_MODEL: "deepseek-v4-pro[1m]"
+          MAX_MCP_OUTPUT_TOKENS: "25000"
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          SUBJECT_PREFIX: "【盘前报告】"
+        run: claude -p "$(cat prompt-premarket.md)" --permission-mode bypassPermissions --output-format text
