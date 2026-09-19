@@ -1,8 +1,8 @@
 name: closing-review
 on:
   schedule:
-    # 北京时间 15:30 = UTC 07:30, 周一至周五
-    - cron: "30 7 * * 1-5"
+    # 北京时间 17:10 = UTC 09:10, 周一至周五
+    - cron: "10 9 * * 1-5"
   workflow_dispatch:
     inputs:
       date:
@@ -11,7 +11,7 @@ on:
         default: ""
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   review:
@@ -43,3 +43,19 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           FORCE_DATE: ${{ github.event.inputs.date }}
         run: claude -p "$(cat prompt-closing.md)" --permission-mode bypassPermissions --output-format text
+
+      - name: Commit merged watch record
+        run: |
+          if [ -f /tmp/record.json ]; then
+            mkdir -p push_history
+            DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)
+            if [ -n "${{ github.event.inputs.date }}" ]; then
+              DATE_STR=$(echo "${{ github.event.inputs.date }}" | tr -d '-')
+            fi
+            cp /tmp/record.json "push_history/${DATE_STR}.json"
+            git config user.name "scan-bot"
+            git config user.email "scan-bot@users.noreply.github.com"
+            git add push_history/
+            git commit -m "merge watch record: ${DATE_STR}" || echo "no changes"
+            git push
+          fi
