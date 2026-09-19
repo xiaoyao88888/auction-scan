@@ -1,0 +1,51 @@
+name: weekly-review
+on:
+  schedule:
+    # 北京时间周六 09:00 = UTC 01:00
+    - cron: "0 1 * * 6"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Write MCP config
+        run: printf '%s' "${{ secrets.WUDAO_MCP_JSON }}" > .mcp.json
+
+      - name: Run weekly review
+        env:
+          ANTHROPIC_AUTH_TOKEN: ${{ secrets.DEEPSEEK_TOKEN }}
+          ANTHROPIC_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL }}
+          ANTHROPIC_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_SONNET_MODEL: "deepseek-v4-pro[1m]"
+          ANTHROPIC_DEFAULT_HAIKU_MODEL: "deepseek-v4-pro"
+          ANTHROPIC_DEFAULT_OPUS_MODEL: "deepseek-v4-pro[1m]"
+          MAX_MCP_OUTPUT_TOKENS: "25000"
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: claude -p "$(cat prompt-weekly.md)" --permission-mode bypassPermissions --output-format text
+
+      - name: Archive report
+        run: |
+          if [ -f /tmp/review_*.md ]; then
+            mkdir -p reports
+            cp /tmp/review_*.md reports/
+            git config user.name "scan-bot"
+            git config user.email "scan-bot@users.noreply.github.com"
+            git add reports/
+            git commit -m "weekly review archive" || echo "no changes"
+            git push
+          fi
