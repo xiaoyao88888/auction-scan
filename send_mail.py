@@ -15,7 +15,8 @@ passwd = os.environ.get("SMTP_PASS", "")
 if not passwd:
     sys.exit("SMTP_PASS 未设置")
 
-subject = "【竞价扫描】" + os.environ.get("DATE_STR", "") + " 开盘扫描"
+prefix = os.environ.get("SUBJECT_PREFIX", "【竞价扫描】")
+subject = prefix + os.environ.get("DATE_STR", "") + " 开盘扫描" if prefix == "【竞价扫描】" else prefix + os.environ.get("DATE_STR", "")
 msg = MIMEText(html, "html", "utf-8")
 msg["Subject"] = Header(subject, "utf-8")
 msg["From"] = formataddr((str(Header("竞价扫描", "utf-8")), "215477645@qq.com"))
