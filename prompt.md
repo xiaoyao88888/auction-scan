@@ -43,5 +43,6 @@ B级条件:其余值得观察的:一字板(标不可参与)、高开大于5(一�
 然后用 Bash 运行: python send_feishu.py /tmp/popup.txt
 2. 写 HTML 文件 /tmp/auction.html(与 popup.txt 内容一致,表格+无序列表,h2/h3标题,S级红色加粗,链接用 https://stock.quicktiny.cn/quote/代码),然后用 Bash 运行: python send_mail.py /tmp/auction.html
 3. 两个脚本输出"OK"即成功
+4. 写推荐记录 JSON 文件 /tmp/record.json,格式:{"date":"YYYY-MM-DD","stocks":[{"code":"600667","name":"太极实业","grade":"S","refPrice":20.56,"prevClose":20.23,"signals":"尾抢+主线","note":"逻辑一句话"}]}。refPrice 用该股当日竞价价(auction_market_scan 的 changeRate 反推:preClose×(1+changeRate/100) 四舍五入两位),包含全部 S 级与 A 级标的(B级不含)。
 
 第六步:输出完整扫描结果文本(作为任务日志),结尾注明飞书与邮件发送结果;任一通道失败说明原因并重试一次。
