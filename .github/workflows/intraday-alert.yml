@@ -1,0 +1,35 @@
+name: intraday-alert
+on:
+  schedule:
+    # 每5分钟(A股交易时段内脚本自行判断)
+    - cron: "*/5 * * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check alerts
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+        run: python intraday_alert.py
+
+      - name: Commit alert state
+        run: |
+          if [ -f alerts_state.json ] && ! git diff --quiet alerts_state.json; then
+            git config user.name "scan-bot"
+            git config user.email "scan-bot@users.noreply.github.com"
+            git add alerts_state.json
+            git commit -m "alerts state: $(TZ=Asia/Shanghai date +%Y%m%d%H%M)" || echo "no changes"
+            git push
+          fi
