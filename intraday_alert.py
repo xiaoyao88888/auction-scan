@@ -38,11 +38,11 @@ def fetch_quotes(codes: list) -> dict:
             continue
         code = f[2]
         try:
-            price = float(f[3]); prev = float(f[4]); high = float(f[33]); low = float(f[34])
+            price = float(f[3]); prev = float(f[4]); open_p = float(f[5]); high = float(f[33]); low = float(f[34])
             limit_up = float(f[47])
             vol_hand = float(f[35].split("/")[1]); amount = float(f[35].split("/")[2])
             avg = amount / (vol_hand * 100) if vol_hand else price
-            out[code] = {"price": price, "prevClose": prev, "high": high, "low": low,
+            out[code] = {"price": price, "prevClose": prev, "open": open_p, "high": high, "low": low,
                          "limitUp": limit_up, "avg": avg, "time": f[30]}
         except (ValueError, IndexError):
             continue
@@ -78,8 +78,26 @@ def evaluate(stock: dict, q: dict, now: datetime.datetime) -> list:
     alerts = []
     ref = float(stock["refPrice"])
     price, high, prev, limit_up, avg = q["price"], q["high"], q["prevClose"], q["limitUp"], q["avg"]
+    open_p = q.get("open", price)
     hhmm = now.strftime("%H:%M")
+    grade = stock.get("grade", "")
 
+    # 弱转强确认买点(仅 W 级观察票,14:30前,当日只报一次)
+    if stock.get("watchBuy") and grade == "W" and hhmm < "14:30":
+        if price >= ref * 1.02 and price >= avg and price >= open_p:
+            alerts.append(f"弱转强确认买点:现价{price:.2f}站上参考价+2%、分时均价与开盘价,量价配合可介入(轻仓)")
+        elif price >= ref * 1.03 and price >= avg:
+            alerts.append(f"弱转强强势确认:现价{price:.2f}超参考价3%且站上均价,注意追高风险")
+
+    # R 级(龙虎榜无溢价风险票):只提示风险不提示买点
+    if grade == "R":
+        if price <= ref * 0.98:
+            alerts.append(f"风险票走弱:现价{price:.2f}跌破参考价{ref:.2f}2%,按昨日龙虎榜风险提示执行回避")
+        if hhmm >= "14:45" and price < ref:
+            alerts.append(f"风险票尾盘弱势:现价{price:.2f}低于参考价,收盘前回避")
+        return alerts
+
+    # S/A 级卖点规则
     # 1. 止损: 跌破参考价3%
     if price <= ref * 0.97:
         alerts.append(f"止损警报:现价{price:.2f}跌破参考价{ref:.2f}超3%")
