@@ -31,5 +31,6 @@ jobs:
             git config user.email "scan-bot@users.noreply.github.com"
             git add alerts_state.json
             git commit -m "alerts state: $(TZ=Asia/Shanghai date +%Y%m%d%H%M)" || echo "no changes"
+            git pull --rebase origin main
             git push
           fi
