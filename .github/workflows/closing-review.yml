@@ -18,6 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
+      - name: Time guard (16:58-17:22 Beijing, 手动指定日期时跳过)
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then echo "manual date, skip time guard"; exit 0; fi
+          NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          if [[ "$NOW" < "16:58" || "$NOW" > "17:22" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
+      - name: Dedup guard (skip if today marker exists)
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then echo "manual date, skip dedup"; exit 0; fi
+          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/closing_${D}.md")
+          if [ "$CODE" = "200" ]; then echo "marker exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -44,19 +55,23 @@ jobs:
           FORCE_DATE: ${{ github.event.inputs.date }}
         run: claude -p "$(cat prompt-closing.md)" --permission-mode bypassPermissions --output-format text
 
-      - name: Commit merged watch record
+      - name: Commit merged watch record and marker
         run: |
+          DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            DATE_STR=$(echo "${{ github.event.inputs.date }}" | tr -d '-')
+          fi
           if [ -f /tmp/record.json ]; then
             mkdir -p push_history
-            DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)
-            if [ -n "${{ github.event.inputs.date }}" ]; then
-              DATE_STR=$(echo "${{ github.event.inputs.date }}" | tr -d '-')
-            fi
             cp /tmp/record.json "push_history/${DATE_STR}.json"
-            git config user.name "scan-bot"
-            git config user.email "scan-bot@users.noreply.github.com"
-            git add push_history/
-            git commit -m "merge watch record: ${DATE_STR}" || echo "no changes"
-            git pull --rebase origin main
-            git push
           fi
+          if [ -f /tmp/closing.txt ]; then
+            mkdir -p reports
+            cp /tmp/closing.txt "reports/closing_${DATE_STR}.md"
+          fi
+          git config user.name "scan-bot"
+          git config user.email "scan-bot@users.noreply.github.com"
+          git add push_history/ reports/ 2>/dev/null || true
+          git commit -m "closing: ${DATE_STR}" || echo "no changes"
+          git pull --rebase origin main
+          git push
