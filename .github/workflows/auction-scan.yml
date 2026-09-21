@@ -13,6 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Time guard (09:14-09:38 Beijing)
+        run: |
+          NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          if [[ "$NOW" < "09:14" || "$NOW" > "09:38" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
+      - name: Dedup guard (skip if today record exists)
+        run: |
+          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/push_history/${D}.json")
+          if [ "$CODE" = "200" ]; then echo "record exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
