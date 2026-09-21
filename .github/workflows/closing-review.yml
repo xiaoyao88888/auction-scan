@@ -10,6 +10,10 @@ on:
         required: false
         default: ""
 
+concurrency:
+  group: closing-daily
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
