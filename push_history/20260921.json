@@ -1,0 +1,165 @@
+{
+  "date": "2026-09-21",
+  "stocks": [
+    {
+      "code": "003026",
+      "name": "中晶科技",
+      "grade": "S",
+      "refPrice": 37.21,
+      "prevClose": 37.2,
+      "signals": "尾抢+主线芯片+平开",
+      "note": "芯片主线+尾抢平开,满足S级4条(涨幅/尾抢/主线/低位)",
+      "watchBuy": false
+    },
+    {
+      "code": "002902",
+      "name": "铭普光磁",
+      "grade": "S",
+      "refPrice": 30.6,
+      "prevClose": 31.2,
+      "signals": "尾抢+主线通信+低开",
+      "note": "通信主线+尾抢低开,满足S级4条",
+      "watchBuy": false
+    },
+    {
+      "code": "002685",
+      "name": "华东重机",
+      "grade": "S",
+      "refPrice": 5.63,
+      "prevClose": 5.66,
+      "signals": "尾抢+主线芯片+低开",
+      "note": "国产芯片主线+尾抢低开,满足S级4条",
+      "watchBuy": false
+    },
+    {
+      "code": "920298",
+      "name": "腾信精密",
+      "grade": "A",
+      "refPrice": 92.99,
+      "prevClose": 90.48,
+      "signals": "尾抢+2.77%+量比15.14",
+      "note": "昨涨停2板,尾抢高开2.77%,缺主线,轻仓",
+      "watchBuy": false
+    },
+    {
+      "code": "603248",
+      "name": "锡华科技",
+      "grade": "A",
+      "refPrice": 25.68,
+      "prevClose": 24.57,
+      "signals": "尾抢+4.52%+4板高标",
+      "note": "4板高标,尾抢4.52%,高位博弈,轻仓",
+      "watchBuy": false
+    },
+    {
+      "code": "301689",
+      "name": "电科思仪",
+      "grade": "A",
+      "refPrice": 62.2,
+      "prevClose": 63.0,
+      "signals": "尾抢+低开1.27%+量比10.77",
+      "note": "昨涨停2板,低开尾抢,缺主线",
+      "watchBuy": false
+    },
+    {
+      "code": "301583",
+      "name": "托伦斯",
+      "grade": "A",
+      "refPrice": 138.7,
+      "prevClose": 142.56,
+      "signals": "尾抢+低开2.71%+量比12.24",
+      "note": "昨涨停2板,低开2.71%尾抢,缺主线",
+      "watchBuy": false
+    },
+    {
+      "code": "600127",
+      "name": "金健米业",
+      "grade": "A",
+      "refPrice": 14.5,
+      "prevClose": 14.32,
+      "signals": "尾抢+1.26%+量比5.52+3板",
+      "note": "农业3板,尾抢,非TOP3主线",
+      "watchBuy": false
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "grade": "A",
+      "refPrice": 19.99,
+      "prevClose": 19.6,
+      "signals": "尾抢+1.99%+量比8.25",
+      "note": "电力尾抢高开,缺主线,弱转强",
+      "watchBuy": false
+    },
+    {
+      "code": "301080",
+      "name": "百普赛斯",
+      "grade": "A",
+      "refPrice": 112.12,
+      "prevClose": 109.48,
+      "signals": "尾抢+2.41%+量比6.85",
+      "note": "病毒防治尾抢高开,缺主线",
+      "watchBuy": false
+    },
+    {
+      "code": "600059",
+      "name": "古越龙山",
+      "grade": "A",
+      "refPrice": 10.87,
+      "prevClose": 10.7,
+      "signals": "尾抢+1.59%+量比7.89",
+      "note": "新消费尾抢高开,缺主线",
+      "watchBuy": false
+    },
+    {
+      "code": "600156",
+      "name": "华升股份",
+      "grade": "A",
+      "refPrice": 9.04,
+      "prevClose": 8.95,
+      "signals": "尾抢+1.01%+量比13.92",
+      "note": "出海/算力尾抢高开,缺主线",
+      "watchBuy": false
+    },
+    {
+      "code": "002693",
+      "name": "双成药业",
+      "grade": "A",
+      "refPrice": 9.28,
+      "prevClose": 9.22,
+      "signals": "尾抢+0.65%+量比15.30",
+      "note": "尾抢小幅高开,无题材",
+      "watchBuy": false
+    },
+    {
+      "code": "002735",
+      "name": "王子新材",
+      "grade": "W",
+      "refPrice": 12.95,
+      "prevClose": 12.95,
+      "signals": "平开+尾抢+量比6.30",
+      "note": "站上竞价价12.95元+2%(13.21)确认",
+      "watchBuy": true
+    },
+    {
+      "code": "000920",
+      "name": "沃顿科技",
+      "grade": "W",
+      "refPrice": 13.16,
+      "prevClose": 13.16,
+      "signals": "平开+尾抢+量比25.80",
+      "note": "站上竞价价13.16元+2%(13.42)确认",
+      "watchBuy": true
+    },
+    {
+      "code": "688261",
+      "name": "东微半导",
+      "grade": "W",
+      "refPrice": 81.37,
+      "prevClose": 81.37,
+      "signals": "平开+尾抢+量比13.34",
+      "note": "站上竞价价81.37元+2%(83.00)确认",
+      "watchBuy": true
+    }
+  ]
+}
