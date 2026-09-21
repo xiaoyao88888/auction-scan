@@ -1,0 +1,200 @@
+{
+  "date": "2026-09-21",
+  "stocks": [
+    {
+      "code": "600127",
+      "name": "金健米业",
+      "grade": "S",
+      "refPrice": 14.5,
+      "prevClose": 14.32,
+      "signals": "尾抢+主线农业+3板",
+      "note": "农业种植3板龙头,低开+尾秒抢筹,主线共振",
+      "watchBuy": false,
+      "dragonNote": "上榜净买+0.25亿，游资对倒无机构，溢价待验证"
+    },
+    {
+      "code": "920298",
+      "name": "腾信精密",
+      "grade": "A",
+      "refPrice": 92.99,
+      "prevClose": 90.48,
+      "signals": "尾抢+竞价区间+2板",
+      "note": "2板尾秒抢筹,缺主线共振,北交所30%波动大",
+      "watchBuy": false,
+      "dragonNote": "未上榜，按竞价逻辑原策略执行"
+    },
+    {
+      "code": "301689",
+      "name": "电科思仪",
+      "grade": "A",
+      "refPrice": 62.2,
+      "prevClose": 63.0,
+      "signals": "尾抢+竞价区间+2板",
+      "note": "2板低开尾秒抢筹,缺主线共振,创业板",
+      "watchBuy": false,
+      "dragonNote": "上榜净卖出-0.90亿，席位不支持持仓，提示兑现"
+    },
+    {
+      "code": "301583",
+      "name": "托伦斯",
+      "grade": "A",
+      "refPrice": 138.7,
+      "prevClose": 142.56,
+      "signals": "尾抢+竞价区间+2板",
+      "note": "2板低开尾秒抢筹,缺主线共振,创业板",
+      "watchBuy": false,
+      "dragonNote": "上榜净卖出-0.73亿，席位不支持持仓，提示兑现"
+    },
+    {
+      "code": "603316",
+      "name": "诚邦股份",
+      "grade": "A",
+      "refPrice": 17.46,
+      "prevClose": 16.69,
+      "signals": "主线地产链+竞价区间+2板",
+      "note": "2板主线地产链,缺尾秒抢筹(neutral)",
+      "watchBuy": false,
+      "dragonNote": "未上榜，按竞价逻辑原策略执行"
+    },
+    {
+      "code": "003026",
+      "name": "中晶科技",
+      "grade": "W",
+      "refPrice": 37.21,
+      "prevClose": 37.2,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002902",
+      "name": "铭普光磁",
+      "grade": "W",
+      "refPrice": 30.6,
+      "prevClose": 31.2,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002735",
+      "name": "王子新材",
+      "grade": "W",
+      "refPrice": 12.95,
+      "prevClose": 12.95,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "000920",
+      "name": "沃顿科技",
+      "grade": "W",
+      "refPrice": 13.16,
+      "prevClose": 13.16,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "688261",
+      "name": "东微半导",
+      "grade": "W",
+      "refPrice": 81.37,
+      "prevClose": 81.37,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002685",
+      "name": "华东重机",
+      "grade": "W",
+      "refPrice": 5.63,
+      "prevClose": 5.66,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "688121",
+      "name": "*ST卓然",
+      "grade": "R",
+      "refPrice": 1.38,
+      "prevClose": 1.15,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨天团/散户大本营净买入为主，无溢价风险",
+      "watchBuy": false
+    },
+    {
+      "code": "600088",
+      "name": "中视传媒",
+      "grade": "R",
+      "refPrice": 14.81,
+      "prevClose": 15.76,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨团结路净买，散户主导，下跌",
+      "watchBuy": false
+    },
+    {
+      "code": "301520",
+      "name": "万邦医药",
+      "grade": "R",
+      "refPrice": 82.38,
+      "prevClose": 72.08,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨东环路参与买入，分歧",
+      "watchBuy": false
+    },
+    {
+      "code": "600448",
+      "name": "华纺股份",
+      "grade": "R",
+      "refPrice": 3.89,
+      "prevClose": 3.54,
+      "signals": "龙虎榜无溢价风险",
+      "note": "机构+游资净卖出，换手39%，易高开低走",
+      "watchBuy": false
+    },
+    {
+      "code": "601811",
+      "name": "新华文轩",
+      "grade": "R",
+      "refPrice": 15.29,
+      "prevClose": 13.9,
+      "signals": "龙虎榜无溢价风险",
+      "note": "机构净卖1.36亿，次日承压",
+      "watchBuy": false
+    },
+    {
+      "code": "000002",
+      "name": "万科A",
+      "grade": "R",
+      "refPrice": 3.65,
+      "prevClose": 3.32,
+      "signals": "龙虎榜无溢价风险",
+      "note": "三亚迎宾路净卖3.64亿，游资出货",
+      "watchBuy": false
+    },
+    {
+      "code": "601579",
+      "name": "会稽山",
+      "grade": "R",
+      "refPrice": 36.12,
+      "prevClose": 32.84,
+      "signals": "龙虎榜无溢价风险",
+      "note": "沪股通净卖2.79亿，北向出货",
+      "watchBuy": false
+    },
+    {
+      "code": "603248",
+      "name": "锡华科技",
+      "grade": "R",
+      "refPrice": 24.25,
+      "prevClose": 24.57,
+      "signals": "龙虎榜无溢价风险",
+      "note": "高标断板+游资出货",
+      "watchBuy": false
+    }
+  ]
+}
