@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
-          if [[ "$NOW" < "08:48" || "$NOW" > "09:12" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
+          if [[ "$NOW" < "08:48" || "$NOW" > "09:40" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
       - name: Dedup guard (skip if today marker exists)
         run: |
           D=$DATE_STR
