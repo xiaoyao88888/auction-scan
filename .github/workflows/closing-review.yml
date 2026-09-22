@@ -24,7 +24,8 @@ jobs:
     steps:
       - name: Time guard (16:58-17:22 Beijing, 手动指定日期时跳过)
         run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then echo "manual date, skip time guard"; exit 0; fi
+          if [ -n "${{ github.event.inputs.date }}" ]; then echo "DATE_STR=$(echo ${{ github.event.inputs.date }} | tr -d -)" >> "$GITHUB_ENV"; echo "manual date, skip time guard"; exit 0; fi
+          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
           if [[ "$NOW" < "16:58" || "$NOW" > "17:22" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
       - name: Dedup guard (skip if today marker exists)
@@ -61,10 +62,7 @@ jobs:
 
       - name: Commit merged watch record and marker
         run: |
-          DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)
-          if [ -n "${{ github.event.inputs.date }}" ]; then
-            DATE_STR=$(echo "${{ github.event.inputs.date }}" | tr -d '-')
-          fi
+          DATE_STR=$DATE_STR
           if [ -f /tmp/record.json ]; then
             mkdir -p push_history
             cp /tmp/record.json "push_history/${DATE_STR}.json"
