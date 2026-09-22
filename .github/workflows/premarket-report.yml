@@ -19,11 +19,12 @@ jobs:
     steps:
       - name: Time guard (08:48-09:12 Beijing)
         run: |
+          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
           if [[ "$NOW" < "08:48" || "$NOW" > "09:12" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
       - name: Dedup guard (skip if today marker exists)
         run: |
-          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          D=$DATE_STR
           CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/premarket_${D}.md")
           if [ "$CODE" = "200" ]; then echo "marker exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
@@ -63,7 +64,7 @@ jobs:
         run: |
           if [ -f /tmp/premarket.txt ]; then
             mkdir -p reports
-            cp /tmp/premarket.txt "reports/premarket_$(TZ=Asia/Shanghai date +%Y%m%d).md"
+            cp /tmp/premarket.txt "reports/premarket_$DATE_STR.md"
             git config user.name "scan-bot"
             git config user.email "scan-bot@users.noreply.github.com"
             git add reports/
