@@ -27,7 +27,7 @@ jobs:
           if [ -n "${{ github.event.inputs.date }}" ]; then echo "DATE_STR=$(echo ${{ github.event.inputs.date }} | tr -d -)" >> "$GITHUB_ENV"; echo "manual date, skip time guard"; exit 0; fi
           echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
-          if [[ "$NOW" < "16:58" || "$NOW" > "17:22" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
+          if [[ "$NOW" < "16:58" || "$NOW" > "19:00" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
       - name: Dedup guard (skip if today marker exists)
         run: |
           if [ -n "${{ github.event.inputs.date }}" ]; then echo "manual date, skip dedup"; exit 0; fi
