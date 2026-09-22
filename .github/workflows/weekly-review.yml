@@ -13,21 +13,37 @@ permissions:
   contents: write
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+      date_str: ${{ steps.check.outputs.date_str }}
+    steps:
+      - id: check
+        run: |
+          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          DOW=$(TZ=Asia/Shanghai date +%u)
+          NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          echo "date_str=$D" >> "$GITHUB_OUTPUT"
+          if [ "$DOW" != "6" ] || [[ "$NOW" < "08:48" || "$NOW" > "09:30" ]]; then
+            echo "out of slot, block weekly"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/weekly_${D}.md")
+          if [ "$CODE" = "200" ]; then
+            echo "marker exists, skip"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
   review:
+    needs: guard
+    if: needs.guard.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Time guard (周六 08:48-09:30 Beijing)
-        run: |
-          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
-          DOW=$(TZ=Asia/Shanghai date +%u)
-          NOW=$(TZ=Asia/Shanghai date +%H:%M)
-          if [ "$DOW" != "6" ] || [[ "$NOW" < "08:48" || "$NOW" > "09:30" ]]; then echo "out of slot, exit"; exit 0; fi
-      - name: Dedup guard (skip if this week marker exists)
-        run: |
-          YW=$(TZ=Asia/Shanghai date +%Y%V)
-          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/weekly_${YW}.md")
-          if [ "$CODE" = "200" ]; then echo "marker exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -54,6 +70,8 @@ jobs:
         run: claude -p "$(cat prompt-weekly.md)" --permission-mode bypassPermissions --output-format text
 
       - name: Archive report
+        env:
+          DATE_STR: ${{ needs.guard.outputs.date_str }}
         run: |
           if [ -f /tmp/review_*.md ]; then
             mkdir -p reports
