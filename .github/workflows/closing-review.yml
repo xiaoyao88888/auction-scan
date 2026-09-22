@@ -18,22 +18,43 @@ permissions:
   contents: write
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+      date_str: ${{ steps.check.outputs.date_str }}
+    steps:
+      - id: check
+        run: |
+          INPUT_DATE="${{ github.event.inputs.date }}"
+          if [ -n "$INPUT_DATE" ]; then
+            echo "date_str=$(echo $INPUT_DATE | tr -d '-')" >> "$GITHUB_OUTPUT"
+            echo "manual date, bypass guard"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          echo "date_str=$D" >> "$GITHUB_OUTPUT"
+          if [[ "$NOW" < "16:58" || "$NOW" > "19:00" ]]; then
+            echo "out of slot $NOW, block closing"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/closing_${D}.md")
+          if [ "$CODE" = "200" ]; then
+            echo "marker exists, skip"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
   review:
+    needs: guard
+    if: needs.guard.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - name: Time guard (16:58-17:22 Beijing, 手动指定日期时跳过)
-        run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then echo "DATE_STR=$(echo ${{ github.event.inputs.date }} | tr -d -)" >> "$GITHUB_ENV"; echo "manual date, skip time guard"; exit 0; fi
-          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
-          NOW=$(TZ=Asia/Shanghai date +%H:%M)
-          if [[ "$NOW" < "16:58" || "$NOW" > "19:00" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
-      - name: Dedup guard (skip if today marker exists)
-        run: |
-          if [ -n "${{ github.event.inputs.date }}" ]; then echo "manual date, skip dedup"; exit 0; fi
-          D=$(TZ=Asia/Shanghai date +%Y%m%d)
-          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/reports/closing_${D}.md")
-          if [ "$CODE" = "200" ]; then echo "marker exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -61,8 +82,9 @@ jobs:
         run: claude -p "$(cat prompt-closing.md)" --permission-mode bypassPermissions --output-format text
 
       - name: Commit merged watch record and marker
+        env:
+          DATE_STR: ${{ needs.guard.outputs.date_str }}
         run: |
-          DATE_STR=$DATE_STR
           if [ -f /tmp/record.json ]; then
             mkdir -p push_history
             cp /tmp/record.json "push_history/${DATE_STR}.json"
