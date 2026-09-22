@@ -1,1 +1,85 @@
-{"date": "2026-09-22", "stocks": [{"code": "300642", "name": "透景生命", "grade": "A", "refPrice": 20.35, "prevClose": 20.35, "signals": "平开+尾抢1.75%+医药主线", "note": "创业板量比15.39<20按v6降A", "watchBuy": false}, {"code": "003040", "name": "楚天龙", "grade": "A", "refPrice": 17.47, "prevClose": 17.31, "signals": "尾抢2.76%+P92+大模型", "note": "非主线词,3条", "watchBuy": false}, {"code": "002172", "name": "澳洋健康", "grade": "A", "refPrice": 5.77, "prevClose": 5.6, "signals": "尾抢1.53%", "note": "昨涨停平开", "watchBuy": false}, {"code": "000070", "name": "特发信息", "grade": "A", "refPrice": 19.8, "prevClose": 19.37, "signals": "尾抢2.16%+AI硬件", "note": "量比6.21偏弱", "watchBuy": false}, {"code": "600448", "name": "华纺股份", "grade": "B", "refPrice": 4.2, "prevClose": 3.89, "signals": "7.97%+量比70.35+P100", "note": "v3.1打板观察", "watchBuy": false}, {"code": "002623", "name": "亚玛顿", "grade": "W", "refPrice": 19.63, "prevClose": 19.67, "signals": "尾抢3.99%+P99光伏", "note": "站上竞价价2%确认", "watchBuy": true}, {"code": "300426", "name": "华智数媒", "grade": "W", "refPrice": 8.12, "prevClose": 7.89, "signals": "尾抢2.99%+P99短剧", "note": "站上竞价价2%确认", "watchBuy": true}]}
+{
+ "date": "2026-09-22",
+ "stocks": [
+  {
+   "code": "600630",
+   "name": "龙头股份",
+   "grade": "A",
+   "refPrice": 8.97,
+   "prevClose": 9.12,
+   "signals": "尾抢2.63%+低开+主板4板",
+   "note": "4板高位博弈,地产链盘中走强可跟",
+   "watchBuy": false
+  },
+  {
+   "code": "300642",
+   "name": "透景生命",
+   "grade": "A",
+   "refPrice": 20.35,
+   "prevClose": 20.35,
+   "signals": "尾抢1.75%+平开",
+   "note": "创业板量比15.39<20,无题材",
+   "watchBuy": false
+  },
+  {
+   "code": "002172",
+   "name": "澳洋健康",
+   "grade": "A",
+   "refPrice": 5.99,
+   "prevClose": 5.81,
+   "signals": "尾抢1.53%+高开3.10%",
+   "note": "银发经济/生育概念非主线,4条仅缺主线",
+   "watchBuy": false
+  },
+  {
+   "code": "920478",
+   "name": "峆一药业",
+   "grade": "A",
+   "refPrice": 12.1,
+   "prevClose": 12.38,
+   "signals": "尾抢0.83%+低开",
+   "note": "北交所30cm波动大,无题材",
+   "watchBuy": false
+  },
+  {
+   "code": "002623",
+   "name": "亚玛顿",
+   "grade": "W",
+   "refPrice": 19.79,
+   "prevClose": 19.83,
+   "signals": "尾抢3.99%+平开+光伏",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "600391",
+   "name": "航发科技",
+   "grade": "W",
+   "refPrice": 43.69,
+   "prevClose": 43.6,
+   "signals": "尾抢2.53%+平开+军工",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "000559",
+   "name": "万向钱潮",
+   "grade": "W",
+   "refPrice": 11.78,
+   "prevClose": 11.72,
+   "signals": "尾抢1.90%+平开+机器人",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "600383",
+   "name": "金地集团",
+   "grade": "W",
+   "refPrice": 2.43,
+   "prevClose": 2.47,
+   "signals": "尾抢1.25%+低开+地产链",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  }
+ ]
+}
