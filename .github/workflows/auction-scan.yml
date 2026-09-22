@@ -13,21 +13,39 @@ permissions:
   contents: write
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+      date_str: ${{ steps.check.outputs.date_str }}
+      date_full: ${{ steps.check.outputs.date_full }}
+    steps:
+      - id: check
+        run: |
+          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          DF=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          echo "date_str=$D" >> "$GITHUB_OUTPUT"
+          echo "date_full=$DF" >> "$GITHUB_OUTPUT"
+          if [[ "$NOW" < "09:14" || "$NOW" > "10:30" ]]; then
+            echo "out of slot $NOW, block scan"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/push_history/${D}.json")
+          if [ "$CODE" = "200" ]; then
+            echo "marker exists, skip"
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
   scan:
+    needs: guard
+    if: needs.guard.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Time guard (09:14-09:38 Beijing)
-        run: |
-          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
-          echo "DATE_FULL=$(TZ=Asia/Shanghai date +%Y-%m-%d)" >> "$GITHUB_ENV"
-          NOW=$(TZ=Asia/Shanghai date +%H:%M)
-          if [[ "$NOW" < "09:14" || "$NOW" > "10:30" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
-      - name: Dedup guard (skip if today record exists)
-        run: |
-          D=$DATE_STR
-          CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/push_history/${D}.json")
-          if [ "$CODE" = "200" ]; then echo "record exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -51,10 +69,12 @@ jobs:
           MAX_MCP_OUTPUT_TOKENS: "25000"
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-          DATE_STR: $(TZ=Asia/Shanghai date +%Y-%m-%d)
+          DATE_STR: ${{ needs.guard.outputs.date_full }}
         run: claude -p "$(cat prompt.md)" --permission-mode bypassPermissions --output-format text
 
       - name: Commit recommendation record
+        env:
+          DATE_STR: ${{ needs.guard.outputs.date_str }}
         run: |
           if [ -f /tmp/record.json ]; then
             mkdir -p push_history
