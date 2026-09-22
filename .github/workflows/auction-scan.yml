@@ -19,11 +19,13 @@ jobs:
     steps:
       - name: Time guard (09:14-09:38 Beijing)
         run: |
+          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
+          echo "DATE_FULL=$(TZ=Asia/Shanghai date +%Y-%m-%d)" >> "$GITHUB_ENV"
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
           if [[ "$NOW" < "09:14" || "$NOW" > "09:38" ]]; then echo "out of slot $NOW, exit"; exit 0; fi
       - name: Dedup guard (skip if today record exists)
         run: |
-          D=$(TZ=Asia/Shanghai date +%Y%m%d)
+          D=$DATE_STR
           CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/push_history/${D}.json")
           if [ "$CODE" = "200" ]; then echo "record exists, skip"; exit 0; fi
       - uses: actions/checkout@v4
@@ -56,11 +58,11 @@ jobs:
         run: |
           if [ -f /tmp/record.json ]; then
             mkdir -p push_history
-            cp /tmp/record.json "push_history/$(TZ=Asia/Shanghai date +%Y%m%d).json"
+            cp /tmp/record.json "push_history/$DATE_STR.json"
             git config user.name "scan-bot"
             git config user.email "scan-bot@users.noreply.github.com"
             git add push_history/
-            git commit -m "record: $(TZ=Asia/Shanghai date +%Y%m%d) recommendations" || echo "no changes"
+            git commit -m "record: $DATE_STR recommendations" || echo "no changes"
             git pull --rebase origin main
             git push
           else
