@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: Time guard (周六 08:48-09:30 Beijing)
         run: |
+          echo "DATE_STR=$(TZ=Asia/Shanghai date +%Y%m%d)" >> "$GITHUB_ENV"
           DOW=$(TZ=Asia/Shanghai date +%u)
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
           if [ "$DOW" != "6" ] || [[ "$NOW" < "08:48" || "$NOW" > "09:30" ]]; then echo "out of slot, exit"; exit 0; fi
@@ -56,7 +57,7 @@ jobs:
         run: |
           if [ -f /tmp/review_*.md ]; then
             mkdir -p reports
-            cp /tmp/review_*.md "reports/weekly_$(TZ=Asia/Shanghai date +%Y%V).md"
+            cp /tmp/review_*.md "reports/weekly_$DATE_STR.md"
             git config user.name "scan-bot"
             git config user.email "scan-bot@users.noreply.github.com"
             git add reports/
