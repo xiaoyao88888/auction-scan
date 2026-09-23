@@ -1,1 +1,135 @@
-{"date": "2026-09-23", "stocks": [{"code": "603893", "name": "瑞芯微", "grade": "B", "refPrice": 219.9, "prevClose": 218.9, "signals": "尾抢+半导体大票", "note": "观察,不动作", "watchBuy": false}, {"code": "001389", "name": "广合科技", "grade": "B", "refPrice": 197.6, "prevClose": 200.0, "signals": "尾抢+AI硬件", "note": "观察,不动作", "watchBuy": false}]}
+{
+  "date": "2026-09-23",
+  "stocks": [
+    {
+      "code": "603893",
+      "name": "瑞芯微",
+      "grade": "B",
+      "refPrice": 219.9,
+      "prevClose": 218.9,
+      "signals": "尾抢+半导体大票",
+      "note": "观察,不动作",
+      "watchBuy": false
+    },
+    {
+      "code": "001389",
+      "name": "广合科技",
+      "grade": "B",
+      "refPrice": 197.6,
+      "prevClose": 200.0,
+      "signals": "尾抢+AI硬件",
+      "note": "观察,不动作",
+      "watchBuy": false
+    },
+    {
+      "code": "300642",
+      "name": "透景生命",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·拉萨散户净买为主",
+      "note": "无溢价风险,次日易高开低走",
+      "watchBuy": false
+    },
+    {
+      "code": "003040",
+      "name": "楚天龙",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·拉萨散户净买+跌停",
+      "note": "无溢价风险,次日易高开低走",
+      "watchBuy": false
+    },
+    {
+      "code": "000504",
+      "name": "南华生物",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·拉萨散户净买+断板",
+      "note": "无溢价风险,次日易高开低走",
+      "watchBuy": false
+    },
+    {
+      "code": "301655",
+      "name": "绿控传动",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·拉萨散户参与+机构净卖",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "001317",
+      "name": "三羊马",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·机构净卖+跌停",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "000756",
+      "name": "新华制药",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·净卖出+跌停",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "000823",
+      "name": "超声电子",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·机构/量化净卖",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "000978",
+      "name": "桂林旅游",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·机构净卖",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "000607",
+      "name": "华媒控股",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·净卖出+跌停",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "301688",
+      "name": "格林生物",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·量化净卖",
+      "note": "无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜·严重异常波动+跌停",
+      "note": "无溢价风险,风险最高,仅卖点监控",
+      "watchBuy": false
+    }
+  ]
+}
