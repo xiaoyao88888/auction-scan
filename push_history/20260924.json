@@ -1,0 +1,125 @@
+{
+  "date": "2026-09-24",
+  "stocks": [
+    {
+      "code": "600371",
+      "name": "万向德农",
+      "grade": "A",
+      "refPrice": 18.08,
+      "prevClose": 17.28,
+      "signals": "尾抢+2板+主板",
+      "note": "4条仅缺主线共振(关税战/并购重组预期/农业),退潮日观察",
+      "watchBuy": false
+    },
+    {
+      "code": "002909",
+      "name": "集泰股份",
+      "grade": "A",
+      "refPrice": 7.67,
+      "prevClose": 7.54,
+      "signals": "尾抢+2板+主板",
+      "note": "港口航运非主线,退潮日观察",
+      "watchBuy": false
+    },
+    {
+      "code": "000560",
+      "name": "我爱我家",
+      "grade": "A",
+      "refPrice": 3.87,
+      "prevClose": 3.86,
+      "signals": "尾抢+4板+平开",
+      "note": "4板高位博弈,若盘中地产链走强可跟随",
+      "watchBuy": false
+    },
+    {
+      "code": "002285",
+      "name": "世联行",
+      "grade": "W",
+      "refPrice": 3.09,
+      "prevClose": 3.17,
+      "signals": "尾抢+低开+地产链",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002564",
+      "name": "天沃科技",
+      "grade": "W",
+      "refPrice": 5.41,
+      "prevClose": 5.49,
+      "signals": "尾抢+低开+地方国资",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "300155",
+      "name": "安居宝",
+      "grade": "W",
+      "refPrice": 4.94,
+      "prevClose": 5.06,
+      "signals": "尾抢+低开+地产链",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002757",
+      "name": "南兴股份",
+      "grade": "W",
+      "refPrice": 19.99,
+      "prevClose": 20.28,
+      "signals": "尾抢+低开+算力",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "600616",
+      "name": "金枫酒业",
+      "grade": "W",
+      "refPrice": 5.24,
+      "prevClose": 5.38,
+      "signals": "尾抢+低开+新消费",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002146",
+      "name": "荣盛发展",
+      "grade": "W",
+      "refPrice": 1.25,
+      "prevClose": 1.27,
+      "signals": "尾抢+低开+地产链",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "000868",
+      "name": "安凯客车",
+      "grade": "W",
+      "refPrice": 4.06,
+      "prevClose": 4.13,
+      "signals": "尾抢+低开+出海",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002646",
+      "name": "天佑德酒",
+      "grade": "W",
+      "refPrice": 7.33,
+      "prevClose": 7.34,
+      "signals": "尾抢+平开+新消费",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "000002",
+      "name": "万科A",
+      "grade": "W",
+      "refPrice": 3.89,
+      "prevClose": 3.92,
+      "signals": "尾抢+低开+地产链",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    }
+  ]
+}
