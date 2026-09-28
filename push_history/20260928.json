@@ -9,7 +9,8 @@
       "prevClose": 6.62,
       "signals": "尾抢+平开+3板+主板",
       "note": "4/5条仅缺主线共振(地产链/地方国资未命中TOP5/TOP3),退潮日观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "未上榜,今日3板封板成功创150日阶段新高,按竞价逻辑原策略执行(可持,退潮日注意高度)"
     },
     {
       "code": "002413",
@@ -19,7 +20,8 @@
       "prevClose": 8.97,
       "signals": "尾抢+2板+主板",
       "note": "4/5条仅缺主线共振(商业航天/算力非主线),退潮日观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "未上榜,今日+2.34%红盘,按竞价逻辑原策略执行"
     },
     {
       "code": "000592",
@@ -29,7 +31,8 @@
       "prevClose": 8.78,
       "signals": "尾抢+平开+2板+主板",
       "note": "4/5条仅缺主线共振(海峡两岸非主线),退潮日观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "上榜,机构4+深股通买入但整体净卖-6553万,席位不支持追高,提示逢高兑现"
     },
     {
       "code": "301699",
@@ -39,7 +42,8 @@
       "prevClose": 35.54,
       "signals": "尾抢+2板+创业板",
       "note": "3/5条,风电非主线,创业板20cm,退潮日观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "上榜,换手65.57%高位巨量净卖-8313万,无溢价风险,明确提示兑现离场"
     },
     {
       "code": "002819",
@@ -49,7 +53,8 @@
       "prevClose": 26.66,
       "signals": "3板+主板+平开",
       "note": "3/5条,无尾抢,并购重组预期非逐字主线",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "上榜,拉萨天团净卖-3172万,无溢价,次日易高开低走,提示兑现"
     },
     {
       "code": "300300",
@@ -59,7 +64,8 @@
       "prevClose": 10.81,
       "signals": "尾抢+2板+低开",
       "note": "2/5条,低开-3.79%超-3,创业板,回避",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "上榜,拉萨天团净卖-8179万,无溢价,明确提示兑现"
     },
     {
       "code": "301689",
@@ -69,7 +75,8 @@
       "prevClose": 83.88,
       "signals": "尾抢+2板+无题材",
       "note": "2/5条,低开-3.03%+无题材+创业板,回避",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "上榜,机构3但整体净卖-3019万/换手56.84%,溢价待验证,提示兑现为主"
     },
     {
       "code": "000910",
@@ -120,6 +127,76 @@
       "signals": "尾抢+平开+新消费",
       "note": "站上竞价价2%确认",
       "watchBuy": true
+    },
+    {
+      "code": "300291",
+      "name": "百纳千成",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "日跌-16.44%,拉萨天团2席净买,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "920025",
+      "name": "凯达重工",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "跌停,拉萨4席净卖-1746万,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "920229",
+      "name": "世纪数码",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "换手57.54%,拉萨2席净卖-1142万,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "300585",
+      "name": "奥联电子",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "跌-17.97%,拉萨1席净卖-1148万,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "920071",
+      "name": "金钛股份",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "换手27.54%,拉萨1席净卖-587万,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "301004",
+      "name": "嘉益股份",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "涨17.06%,拉萨1席净卖-1238万,无溢价风险,仅卖点监控",
+      "watchBuy": false
+    },
+    {
+      "code": "920298",
+      "name": "腾信精密",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜席位风险",
+      "note": "换手34.83%,拉萨1席净卖-2879万,无溢价风险,仅卖点监控",
+      "watchBuy": false
     }
   ]
 }
