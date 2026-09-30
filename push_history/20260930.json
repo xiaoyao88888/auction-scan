@@ -1,1 +1,45 @@
-{"date": "2026-09-30", "stocks": [{"code": "600360", "name": "华微电子", "grade": "B", "refPrice": 11.43, "prevClose": 11.32, "signals": "尾抢+功率半导体", "note": "节后观察", "watchBuy": false}, {"code": "600488", "name": "津药药业", "grade": "B", "refPrice": 6.83, "prevClose": 6.88, "signals": "尾抢+量比18", "note": "节后观察", "watchBuy": false}, {"code": "002912", "name": "中新赛克", "grade": "B", "refPrice": 28.65, "prevClose": 29.2, "signals": "尾抢+AI安全", "note": "节后观察", "watchBuy": false}]}
+{
+  "date": "2026-09-30",
+  "stocks": [
+    {
+      "code": "600360",
+      "name": "华微电子",
+      "grade": "B",
+      "refPrice": 11.43,
+      "prevClose": 11.32,
+      "signals": "尾抢+功率半导体",
+      "note": "节后观察;未上龙虎榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "600488",
+      "name": "津药药业",
+      "grade": "B",
+      "refPrice": 6.83,
+      "prevClose": 6.88,
+      "signals": "尾抢+量比18",
+      "note": "节后观察;今日断板-3.04%+异常波动公告,未上龙虎榜,偏谨慎",
+      "watchBuy": false
+    },
+    {
+      "code": "002912",
+      "name": "中新赛克",
+      "grade": "B",
+      "refPrice": 28.65,
+      "prevClose": 29.2,
+      "signals": "尾抢+AI安全",
+      "note": "节后观察;今日断板-8.65%+异常波动公告,未上龙虎榜,偏谨慎",
+      "watchBuy": false
+    },
+    {
+      "code": "001246",
+      "name": "力勤资源",
+      "grade": "R",
+      "refPrice": 65.09,
+      "prevClose": 21.23,
+      "signals": "东财拉萨系净买约4.8亿+次新首日+206%",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    }
+  ]
+}
