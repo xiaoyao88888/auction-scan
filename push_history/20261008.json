@@ -9,7 +9,8 @@
    "prevClose": 12.24,
    "signals": "尾抢+地产链主线",
    "note": "4板高标,地产链TOP5主线共振,高位博弈",
-   "watchBuy": false
+   "watchBuy": false,
+   "dragonNote": "未上榜,今日断板-0.98%,按竞价逻辑原策略,明日不反包则离场"
   },
   {
    "code": "002866",
@@ -19,7 +20,8 @@
    "prevClose": 16.9,
    "signals": "尾抢+低开",
    "note": "昨2板,若盘中题材走强可跟随",
-   "watchBuy": false
+   "watchBuy": false,
+   "dragonNote": "已上榜,净买+1507万,席位无机构无游资(散户+量化),不支持溢价,次日冲高逢高兑现"
   },
   {
    "code": "603200",
@@ -29,7 +31,8 @@
    "prevClose": 44.74,
    "signals": "尾抢+平开",
    "note": "昨2板,若盘中题材走强可跟随",
-   "watchBuy": false
+   "watchBuy": false,
+   "dragonNote": "未上榜,今日开板10次成烂板,持有者明日逢高兑现"
   },
   {
    "code": "002799",
@@ -90,6 +93,66 @@
    "signals": "尾抢+平开",
    "note": "站上竞价价2%确认",
    "watchBuy": true
+  },
+  {
+   "code": "001216",
+   "name": "华瓷股份",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "龙虎榜拉萨天团主导买入,净卖出,次日易高开低走",
+   "watchBuy": false
+  },
+  {
+   "code": "301513",
+   "name": "尚水智能",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "龙虎榜拉萨天团主导,净卖出,次日易高开低走",
+   "watchBuy": false
+  },
+  {
+   "code": "920202",
+   "name": "安达股份",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "北交所,拉萨天团,跌停股,无溢价风险",
+   "watchBuy": false
+  },
+  {
+   "code": "920779",
+   "name": "武汉蓝电",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "北交所,拉萨天团,+53%妖股,无溢价风险",
+   "watchBuy": false
+  },
+  {
+   "code": "920627",
+   "name": "力王股份",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "北交所,散户/量化席位,+29.96%,无溢价风险",
+   "watchBuy": false
+  },
+  {
+   "code": "301139",
+   "name": "元道退",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜无溢价风险",
+   "note": "退市整理期,拉萨天团,高风险勿接力",
+   "watchBuy": false
   }
  ]
 }
