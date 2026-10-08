@@ -1,0 +1,95 @@
+{
+ "date": "2026-10-08",
+ "stocks": [
+  {
+   "code": "000011",
+   "name": "深物业A",
+   "grade": "A",
+   "refPrice": 12.19,
+   "prevClose": 12.24,
+   "signals": "尾抢+地产链主线",
+   "note": "4板高标,地产链TOP5主线共振,高位博弈",
+   "watchBuy": false
+  },
+  {
+   "code": "002866",
+   "name": "传艺科技",
+   "grade": "A",
+   "refPrice": 16.76,
+   "prevClose": 16.9,
+   "signals": "尾抢+低开",
+   "note": "昨2板,若盘中题材走强可跟随",
+   "watchBuy": false
+  },
+  {
+   "code": "603200",
+   "name": "上海洗霸",
+   "grade": "A",
+   "refPrice": 44.49,
+   "prevClose": 44.74,
+   "signals": "尾抢+平开",
+   "note": "昨2板,若盘中题材走强可跟随",
+   "watchBuy": false
+  },
+  {
+   "code": "002799",
+   "name": "环球印务",
+   "grade": "W",
+   "refPrice": 7.25,
+   "prevClose": 7.32,
+   "signals": "尾抢+平开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "603396",
+   "name": "金辰股份",
+   "grade": "W",
+   "refPrice": 32.81,
+   "prevClose": 33.5,
+   "signals": "尾抢+低开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "600719",
+   "name": "大连热电",
+   "grade": "W",
+   "refPrice": 8.46,
+   "prevClose": 8.72,
+   "signals": "尾抢+低开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "603982",
+   "name": "泉峰汽车",
+   "grade": "W",
+   "refPrice": 6.59,
+   "prevClose": 6.77,
+   "signals": "尾抢+低开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "002043",
+   "name": "兔宝宝",
+   "grade": "W",
+   "refPrice": 11.67,
+   "prevClose": 12.02,
+   "signals": "尾抢+低开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  },
+  {
+   "code": "002262",
+   "name": "恩华药业",
+   "grade": "W",
+   "refPrice": 22.64,
+   "prevClose": 22.73,
+   "signals": "尾抢+平开",
+   "note": "站上竞价价2%确认",
+   "watchBuy": true
+  }
+ ]
+}
