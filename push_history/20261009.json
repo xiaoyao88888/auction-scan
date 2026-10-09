@@ -1,0 +1,55 @@
+{
+ "date": "2026-10-09",
+ "stocks": [
+  {
+   "code": "920202",
+   "name": "安达股份",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜拉萨天团包场",
+   "note": "东方财富拉萨系席位主导,次日易高开低走,持有者逢高兑现,未持有者不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "002531",
+   "name": "天顺风能",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜全拉萨系5席",
+   "note": "东方财富拉萨系席位主导,次日易高开低走,持有者逢高兑现,未持有者不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "001216",
+   "name": "华瓷股份",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜拉萨散户主导",
+   "note": "东方财富拉萨系席位主导,次日易高开低走,持有者逢高兑现,未持有者不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "002172",
+   "name": "澳洋健康",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜拉萨系+机构净卖",
+   "note": "东方财富拉萨系席位主导且机构净卖,次日易高开低走,持有者逢高兑现,未持有者不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "920779",
+   "name": "武汉蓝电",
+   "grade": "R",
+   "refPrice": null,
+   "prevClose": null,
+   "signals": "龙虎榜散户席位为主",
+   "note": "散户(国信互联网+拉萨系)主导,次日易高开低走,持有者逢高兑现,未持有者不接力",
+   "watchBuy": false
+  }
+ ]
+}
