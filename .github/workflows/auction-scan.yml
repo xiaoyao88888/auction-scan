@@ -27,7 +27,7 @@ jobs:
           NOW=$(TZ=Asia/Shanghai date +%H:%M)
           echo "date_str=$D" >> "$GITHUB_OUTPUT"
           echo "date_full=$DF" >> "$GITHUB_OUTPUT"
-          if [[ "$NOW" < "09:14" || "$NOW" > "10:30" ]]; then
+          if [[ "$NOW" < "09:14" || "$NOW" > "11:00" ]]; then
             echo "out of slot $NOW, block scan"
             echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
