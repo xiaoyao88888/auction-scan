@@ -1,1 +1,121 @@
-{"date": "2026-10-13", "stocks": [{"code": "002264", "name": "新华都", "grade": "B", "refPrice": 8.7, "prevClose": 8.53, "signals": "尾抢+阿里AI应用", "note": "观察", "watchBuy": false}, {"code": "300006", "name": "莱美药业", "grade": "B", "refPrice": 6.83, "prevClose": 6.59, "signals": "尾抢+创新药", "note": "观察", "watchBuy": false}]}
+{
+  "date": "2026-10-13",
+  "stocks": [
+    {
+      "code": "002264",
+      "name": "新华都",
+      "grade": "B",
+      "refPrice": 8.7,
+      "prevClose": 8.53,
+      "signals": "尾抢+阿里AI应用",
+      "note": "观察",
+      "watchBuy": false
+    },
+    {
+      "code": "300006",
+      "name": "莱美药业",
+      "grade": "B",
+      "refPrice": 6.83,
+      "prevClose": 6.59,
+      "signals": "尾抢+创新药",
+      "note": "观察",
+      "watchBuy": false
+    },
+    {
+      "code": "301660",
+      "name": "N粤芯半导体-U",
+      "grade": "R",
+      "signals": "拉萨天团4席位净买2.37亿,散户大本营",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002667",
+      "name": "*ST威领",
+      "grade": "R",
+      "signals": "拉萨+散户净买,ST风险",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002058",
+      "name": "紫竹高科",
+      "grade": "R",
+      "signals": "拉萨散户接盘(跌停)",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002866",
+      "name": "传艺科技",
+      "grade": "R",
+      "signals": "拉萨3席位接盘(跌停)",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "301030",
+      "name": "*ST仕净",
+      "grade": "R",
+      "signals": "拉萨散户+ST,机构净卖",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "920627",
+      "name": "力王股份",
+      "grade": "R",
+      "signals": "拉萨散户接盘,机构净卖",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002692",
+      "name": "远程股份",
+      "grade": "R",
+      "signals": "游资出货+拉萨接盘",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "001336",
+      "name": "楚环科技",
+      "grade": "R",
+      "signals": "散户接盘(跌停)",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "001330",
+      "name": "博纳影业",
+      "grade": "R",
+      "signals": "宁波桑田路出货+拉萨接盘",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002487",
+      "name": "大金重工",
+      "grade": "R",
+      "signals": "拉萨接盘(跌停),净卖1.39亿",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "301689",
+      "name": "电科思仪",
+      "grade": "R",
+      "signals": "机构净卖6868万+拉萨买",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "002579",
+      "name": "中京电子",
+      "grade": "R",
+      "signals": "机构净卖4506万",
+      "note": "龙虎榜无溢价风险,次日易高开低走,持有者逢高兑现,未持有者不接力",
+      "watchBuy": false
+    }
+  ]
+}
