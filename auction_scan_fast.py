@@ -236,6 +236,21 @@ def main():
         print("\n[dry-run] 未发送")
         return
 
+    # 防重复:今日marker已存在则跳过(本机与云端并发时后到者退出)
+    try:
+        _pat = os.environ.get("GH_PAT") or open("C:/Users/xy/.github_pat", encoding="utf-8").read().strip()
+        _req = urllib.request.Request(f"{GH_API}/contents/push_history/{date.replace('-', '')}.json",
+                                      headers={"Authorization": f"Bearer {_pat}",
+                                               "Accept": "application/vnd.github+json"})
+        with urllib.request.urlopen(_req, timeout=10) as _r:
+            _r.read()
+        print("marker already exists, skip (dedup)")
+        return
+    except urllib.error.HTTPError:
+        pass  # 404 = 今日未推,继续
+    except Exception:
+        pass
+
     # 飞书群 webhook
     ok_fs = False
     try:
