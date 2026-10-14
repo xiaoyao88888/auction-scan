@@ -91,8 +91,9 @@ def fetch_all(date):
 
 
 def main():
-    date = datetime.date.today().strftime("%Y-%m-%d")
-    now_hm = datetime.datetime.now().strftime("%H:%M")
+    tz = zoneinfo.ZoneInfo("Asia/Shanghai")
+    date = datetime.datetime.now(tz).strftime("%Y-%m-%d")
+    now_hm = datetime.datetime.now(tz).strftime("%H:%M")
     if not DRY and not ("09:27" <= now_hm <= "09:45"):
         print(f"out of push window {now_hm}, skip")
         return
