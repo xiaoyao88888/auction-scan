@@ -1,0 +1,27 @@
+name: fast-auction
+on:
+  schedule:
+    # 北京时间 09:27 = UTC 01:27, 周一至周五(云端兜底,本机速推优先)
+    - cron: "27 1 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  fast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run fast scan (stdlib only, ~15s)
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python auction_scan_fast.py
