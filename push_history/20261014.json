@@ -1,0 +1,145 @@
+{
+  "date": "2026-10-14",
+  "stocks": [
+    {
+      "code": "603096",
+      "name": "新经典",
+      "grade": "A",
+      "refPrice": 22.0,
+      "prevClose": 20.97,
+      "signals": "尾抢+4板高标",
+      "note": "高位博弈风险,仅标杆观察",
+      "watchBuy": false
+    },
+    {
+      "code": "603968",
+      "name": "醋化股份",
+      "grade": "A",
+      "refPrice": 15.07,
+      "prevClose": 14.36,
+      "signals": "主线共振化工",
+      "note": "缺尾抢,A级观察",
+      "watchBuy": false
+    },
+    {
+      "code": "600693",
+      "name": "东百集团",
+      "grade": "A",
+      "refPrice": 12.4,
+      "prevClose": 12.3,
+      "signals": "尾抢+平开",
+      "note": "若盘中题材走强可跟随",
+      "watchBuy": false
+    },
+    {
+      "code": "002692",
+      "name": "远程股份",
+      "grade": "W",
+      "refPrice": 4.76,
+      "prevClose": 4.93,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "605287",
+      "name": "德才股份",
+      "grade": "W",
+      "refPrice": 43.98,
+      "prevClose": 45.8,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "603528",
+      "name": "多伦科技",
+      "grade": "W",
+      "refPrice": 7.0,
+      "prevClose": 7.03,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "600318",
+      "name": "新力金融",
+      "grade": "W",
+      "refPrice": 7.4,
+      "prevClose": 7.53,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "600408",
+      "name": "安泰集团",
+      "grade": "W",
+      "refPrice": 3.67,
+      "prevClose": 3.69,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "688004",
+      "name": "博汇科技",
+      "grade": "W",
+      "refPrice": 41.35,
+      "prevClose": 42.73,
+      "signals": "低开尾抢(科创板)",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002354",
+      "name": "天娱数科",
+      "grade": "W",
+      "refPrice": 7.66,
+      "prevClose": 7.77,
+      "signals": "低开尾抢+电力",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002961",
+      "name": "瑞达期货",
+      "grade": "W",
+      "refPrice": 14.38,
+      "prevClose": 14.36,
+      "signals": "平开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002425",
+      "name": "凯撒文化",
+      "grade": "W",
+      "refPrice": 3.35,
+      "prevClose": 3.38,
+      "signals": "低开尾抢+AI应用",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "603216",
+      "name": "梦天家居",
+      "grade": "W",
+      "refPrice": 24.68,
+      "prevClose": 24.88,
+      "signals": "低开尾抢",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002913",
+      "name": "奥士康",
+      "grade": "W",
+      "refPrice": 87.97,
+      "prevClose": 89.87,
+      "signals": "低开尾抢+AI硬件",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    }
+  ]
+}
