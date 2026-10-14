@@ -9,7 +9,8 @@
       "prevClose": 20.97,
       "signals": "尾抢+4板高标",
       "note": "高位博弈风险,仅标杆观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "龙虎榜未上榜,按竞价逻辑原策略执行;4板已发异常波动公告,注意监管风险"
     },
     {
       "code": "603968",
@@ -19,7 +20,8 @@
       "prevClose": 14.36,
       "signals": "主线共振化工",
       "note": "缺尾抢,A级观察",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "龙虎榜未上榜,按竞价逻辑原策略执行;3板已发异常波动公告"
     },
     {
       "code": "600693",
@@ -29,7 +31,8 @@
       "prevClose": 12.3,
       "signals": "尾抢+平开",
       "note": "若盘中题材走强可跟随",
-      "watchBuy": false
+      "watchBuy": false,
+      "dragonNote": "龙虎榜未上榜,按竞价逻辑原策略执行"
     },
     {
       "code": "002692",
@@ -38,8 +41,9 @@
       "refPrice": 4.76,
       "prevClose": 4.93,
       "signals": "低开尾抢",
-      "note": "站上竞价价2%确认",
-      "watchBuy": true
+      "note": "站上竞价价2%确认;今日龙虎榜机构净卖-946万,弱转强未确认(收盘跌-8.18%)",
+      "watchBuy": true,
+      "dragonNote": "龙虎榜机构净卖,弱转强未确认,买点须谨慎"
     },
     {
       "code": "605287",
@@ -140,6 +144,86 @@
       "signals": "低开尾抢+AI硬件",
       "note": "站上竞价价2%确认",
       "watchBuy": true
+    },
+    {
+      "code": "002696",
+      "name": "百洋股份",
+      "grade": "R",
+      "refPrice": 9.75,
+      "prevClose": 8.86,
+      "signals": "龙虎榜机构净卖-4051万",
+      "note": "4板高标机构出货,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "001318",
+      "name": "阳光乳业",
+      "grade": "R",
+      "refPrice": 15.43,
+      "prevClose": 14.03,
+      "signals": "龙虎榜机构净卖-6298万",
+      "note": "2板机构出货,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "000823",
+      "name": "超声电子",
+      "grade": "R",
+      "refPrice": 24.55,
+      "prevClose": 22.32,
+      "signals": "龙虎榜机构净卖-2163万",
+      "note": "2板机构出货,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "002917",
+      "name": "金奥博",
+      "grade": "R",
+      "refPrice": 12.1,
+      "prevClose": 11.0,
+      "signals": "龙虎榜机构净卖-2058万",
+      "note": "2板机构出货,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "300107",
+      "name": "建新股份",
+      "grade": "R",
+      "refPrice": 9.02,
+      "prevClose": 8.63,
+      "signals": "拉萨天团净买+1911万",
+      "note": "散户席位为主,次日易高开低走,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "002949",
+      "name": "华阳国际",
+      "grade": "R",
+      "refPrice": 13.19,
+      "prevClose": 14.32,
+      "signals": "拉萨天团净买+443万",
+      "note": "散户席位为主,仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "001336",
+      "name": "楚环科技",
+      "grade": "R",
+      "refPrice": 16.88,
+      "prevClose": 18.41,
+      "signals": "拉萨净买+1122万/机构净卖",
+      "note": "仅卖点监控无买点",
+      "watchBuy": false
+    },
+    {
+      "code": "301697",
+      "name": "贝特利",
+      "grade": "R",
+      "refPrice": 25.29,
+      "prevClose": 28.44,
+      "signals": "拉萨净买+602万/机构净卖",
+      "note": "仅卖点监控无买点",
+      "watchBuy": false
     }
   ]
 }
