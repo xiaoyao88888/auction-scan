@@ -1,1 +1,112 @@
-{"date": "2026-10-19", "stocks": [{"code": "002735", "name": "王子新材", "grade": "S", "refPrice": 10.42, "prevClose": 10.74, "signals": "竞价-2.98%尾抢+2.16%量比9.88,5条全满足", "note": "昨炸板弱转强;低吸区10.10-10.20,止损10.00", "watchBuy": false}, {"code": "920690", "name": "捷众科技", "grade": "A", "refPrice": 12.2, "prevClose": 11.85, "signals": "满足3条", "note": "观察", "watchBuy": false}, {"code": "000678", "name": "襄阳轴承", "grade": "A", "refPrice": 10.4, "prevClose": 10.93, "signals": "满足2条", "note": "观察", "watchBuy": false}, {"code": "600668", "name": "尖峰集团", "grade": "A", "refPrice": 8.15, "prevClose": 8.45, "signals": "尾抢", "note": "观察", "watchBuy": false}, {"code": "002343", "name": "慈文传媒", "grade": "A", "refPrice": 8.8, "prevClose": 9.33, "signals": "尾抢+5.57%兑现", "note": "AIGC短剧,换手33.96%", "watchBuy": false}, {"code": "600252", "name": "中恒集团", "grade": "A", "refPrice": 2.34, "prevClose": 2.46, "signals": "尾抢", "note": "观察", "watchBuy": false}, {"code": "000995", "name": "皇台酒业", "grade": "A", "refPrice": 13.45, "prevClose": 14.28, "signals": "低开-5.81%尾抢,当日+7.84%兑现", "note": "弱转强剧本,回踩14.5", "watchBuy": false}]}
+{
+  "date": "2026-10-19",
+  "stocks": [
+    {
+      "code": "002735",
+      "name": "王子新材",
+      "grade": "S",
+      "refPrice": 10.42,
+      "prevClose": 10.74,
+      "signals": "竞价-2.98%尾抢+2.16%量比9.88,5条全满足",
+      "note": "昨炸板弱转强;低吸区10.10-10.20,止损10.00",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "920690",
+      "name": "捷众科技",
+      "grade": "A",
+      "refPrice": 12.2,
+      "prevClose": 11.85,
+      "signals": "满足3条",
+      "note": "观察",
+      "watchBuy": false,
+      "dragonNote": "上榜净卖-0.09亿,华鑫+拉萨席位不支持,提示兑现不接力"
+    },
+    {
+      "code": "000678",
+      "name": "襄阳轴承",
+      "grade": "A",
+      "refPrice": 10.4,
+      "prevClose": 10.93,
+      "signals": "满足2条",
+      "note": "观察",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "600668",
+      "name": "尖峰集团",
+      "grade": "A",
+      "refPrice": 8.15,
+      "prevClose": 8.45,
+      "signals": "尾抢",
+      "note": "观察",
+      "watchBuy": false,
+      "dragonNote": "未上榜;今日断板跌停+异常波动公告,建议规避"
+    },
+    {
+      "code": "002343",
+      "name": "慈文传媒",
+      "grade": "A",
+      "refPrice": 8.8,
+      "prevClose": 9.33,
+      "signals": "尾抢+5.57%兑现",
+      "note": "AIGC短剧,换手33.96%",
+      "watchBuy": false,
+      "dragonNote": "上榜净买6.09亿机构3.13亿,强溢价支持持仓,明日高开兑现部分"
+    },
+    {
+      "code": "600252",
+      "name": "中恒集团",
+      "grade": "A",
+      "refPrice": 2.34,
+      "prevClose": 2.46,
+      "signals": "尾抢",
+      "note": "观察",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "000995",
+      "name": "皇台酒业",
+      "grade": "A",
+      "refPrice": 13.45,
+      "prevClose": 14.28,
+      "signals": "低开-5.81%尾抢,当日+7.84%兑现",
+      "note": "弱转强剧本,回踩14.5",
+      "watchBuy": false,
+      "dragonNote": "上榜机构净卖0.43亿+拉萨接盘,无溢价,提示逢高兑现"
+    },
+    {
+      "code": "600825",
+      "name": "新华传媒",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "",
+      "note": "11板复牌断板,拉萨三大营业部1.61亿接盘,次日易高开低走",
+      "watchBuy": false
+    },
+    {
+      "code": "600148",
+      "name": "长春一东",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "",
+      "note": "2板军工,拉萨东环路买入为主,无溢价风险",
+      "watchBuy": false
+    },
+    {
+      "code": "920162",
+      "name": "莫森泰克",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "",
+      "note": "拉萨东城区买入,换手40.69%,无溢价风险",
+      "watchBuy": false
+    }
+  ]
+}
