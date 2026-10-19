@@ -163,7 +163,7 @@ def main():
             return "A", f"满足{hits}条"
         return "B", "记录"
 
-    s_list, a_list, b_list = [], [], []
+    s_list, a_list, b_list, board_list = [], [], [], []
     seen = set()
     for pool, tag in ((prev, "昨涨停"), (broken, "昨炸板")):
         for r in (pool or {}).get("rows", [])[:15]:
@@ -183,6 +183,28 @@ def main():
                 a_list.append(item)
             else:
                 b_list.append(item)
+            # 打板候选收集(仅昨涨停池)
+            if tag == "昨涨停":
+                cr, vr = r.get("changeRate", 0), r.get("volumeRatio", 0)
+                if r.get("isLimitUpOpen"):
+                    board_list.append({"name": r.get("name"), "code": code,
+                                       "kind": "一字", "cr": cr, "vr": vr,
+                                       "seal": (r.get("limitBuyAmountAfter920") or 0) / 1e8,
+                                       "ps": r.get("prevStreak", 0),
+                                       "themes": list(themes_of(r)),
+                                       "score": 10 + (r.get("limitBuyAmountAfter920") or 0) / 1e10})
+                elif 5 <= cr <= 9.9 and (vr or 0) >= 10:
+                    sc = 3 if r.get("prevStreak", 0) + 1 <= 2 else (2 if r.get("prevStreak", 0) + 1 == 3 else 1)
+                    if themes_of(r) & set(top5) | themes_of(r) & set(top3):
+                        sc += 1
+                    if (vr or 0) >= 20:
+                        sc += 1
+                    if r.get("openBidSignal") == "late_bid_down":
+                        sc -= 1
+                    board_list.append({"name": r.get("name"), "code": code,
+                                       "kind": "高开", "cr": cr, "vr": vr,
+                                       "seal": 0, "ps": r.get("prevStreak", 0),
+                                       "themes": list(themes_of(r)), "score": sc})
 
     s_list = sorted(s_list, key=lambda x: -x.get("vr", 0))[:2]
     # A级按优先级排序:主线命中优先,其次量比
@@ -240,6 +262,16 @@ def main():
             if set(x.get("themes", [])) & main_top_set: tags.append("主线")
             tags.append(f"量比{x.get('vr', 0)}")
             lines.append(f"{i}. {x['name']}({x['code']}) 参考{x['ref']} — {x['g']}级 {','.join(tags)} 分{sc};回踩{x['ref']}不破低吸,破{x['ref']*0.97:.2f}止损")
+
+    # —— 打板排序(仅打板资金) ——
+    if board_list:
+        board_list.sort(key=lambda x: -x["score"])
+        lines.append("**【打板排序】**(仅打板资金参与,低吸者一律不碰)")
+        for i, x in enumerate(board_list[:6], 1):
+            if x["kind"] == "一字":
+                lines.append(f"{i}. {x['name']}({x['code']}) 涨停开一字 委买{x['seal']:.1f}亿 昨{x['ps']}板 — 排板(买不进,挂单等炸板回封)")
+            else:
+                lines.append(f"{i}. {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 昨{x['ps']}板 — 打板观察(秒封才上,炸板走人)")
 
     # —— 出手清单·总结排序(按优先级排序,30秒完成决策) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
