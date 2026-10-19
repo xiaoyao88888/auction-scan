@@ -95,7 +95,7 @@ def main():
     tz = zoneinfo.ZoneInfo("Asia/Shanghai")
     date = datetime.datetime.now(tz).strftime("%Y-%m-%d")
     now_hm = datetime.datetime.now(tz).strftime("%H:%M")
-    if not DRY and not ("09:27" <= now_hm <= "09:45"):
+    if not DRY and "--force" not in sys.argv and not ("09:27" <= now_hm <= "09:45"):
         print(f"out of push window {now_hm}, skip")
         return
     data, err = fetch_all(date)
@@ -210,6 +210,36 @@ def main():
         lines.append("**A级:无**")
     if b_list:
         lines.append("**B级观察**:" + "、".join(f"{x['name']}" for x in b_list[:8]))
+
+    # —— 综合介入顺序(S级+竞价池候选合并打分排序) ——
+    main_top_set = set(top5) | set(top3)
+    def inter_score(x):
+        sc = {"S": 5, "A": 3}.get(x["g"], 1)
+        if x.get("op") and x["op"] > 0:
+            sc += 1          # 尾秒抢筹
+        if set(x.get("themes", [])) & main_top_set:
+            sc += 1          # 主线命中
+        if (x.get("vr") or 0) >= 10:
+            sc += 1          # 量比放大
+        if (x.get("cr") or 0) < 0:
+            sc += 0.5        # 低开=低吸优势
+        if x.get("ps", 0) >= 4:
+            sc -= 1          # 高标减分
+        return sc
+    order_cand = []
+    for x in s_list + a_list:
+        if (x.get("cr") or 0) >= 9.9:   # 一字/涨停开不可介入
+            continue
+        order_cand.append((inter_score(x), x))
+    order_cand.sort(key=lambda t: -t[0])
+    if order_cand:
+        lines.append(f"**【综合介入顺序】**(S级+竞价池合并排序,{'介入' if actionable else '观察'}(今日{'可操作' if actionable else '不动作'}))")
+        for i, (sc, x) in enumerate(order_cand[:8], 1):
+            tags = []
+            if x.get("op") and x["op"] > 0: tags.append("尾抢")
+            if set(x.get("themes", [])) & main_top_set: tags.append("主线")
+            tags.append(f"量比{x.get('vr', 0)}")
+            lines.append(f"{i}. {x['name']}({x['code']}) 参考{x['ref']} — {x['g']}级 {','.join(tags)} 分{sc};回踩{x['ref']}不破低吸,破{x['ref']*0.97:.2f}止损")
 
     # —— 出手清单·总结排序(按优先级排序,30秒完成决策) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
