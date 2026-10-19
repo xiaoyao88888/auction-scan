@@ -269,9 +269,12 @@ def main():
         lines.append("**【打板排序】**(仅打板资金参与,低吸者一律不碰)")
         for i, x in enumerate(board_list[:6], 1):
             if x["kind"] == "一字":
-                lines.append(f"{i}. {x['name']}({x['code']}) 涨停开一字 委买{x['seal']:.1f}亿 昨{x['ps']}板 — 排板(买不进,挂单等炸板回封)")
+                g = "S级"
+                lines.append(f"{i}. {g} {x['name']}({x['code']}) 涨停开一字 委买{x['seal']:.1f}亿 昨{x['ps']}板 — 排板(买不进,挂单等炸板回封)")
             else:
-                lines.append(f"{i}. {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 昨{x['ps']}板 — 打板观察(秒封才上,炸板走人)")
+                g = "A级" if x["score"] >= 4 else "B级"
+                lines.append(f"{i}. {g} {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 昨{x['ps']}板 — 打板观察(秒封才上,炸板走人)")
+        lines.append("打板优先级:" + " > ".join(x["name"] for x in board_list[:5]))
 
     # —— 出手清单·总结排序(按优先级排序,30秒完成决策) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
@@ -286,7 +289,7 @@ def main():
         top_s = s_list[0] if s_list else None
         lines.append("- 低吸首选:" + (f"{top_s['name']}(回踩{top_s['ref']}不破,买入≤竞价价+1%;出场:尾盘≥3%减半/次日+2%不封走/破买价3%止损)" if top_s else "无"))
         board_watch = [x for x in b_list if 5 <= (x.get("cr") or 0) <= 8 and (x.get("vr") or 0) >= 10]
-        lines.append("- 打板观察:" + ("、".join(f"{x['name']}({x['cr']:.1f}%+量比{x['vr']})" for x in board_watch[:3]) if board_watch else "无") + "(仅打板资金,低吸不买)")
+        lines.append("- 打板观察:" + (" > ".join(f"{x['name']}({x['cr']:.1f}%+量比{x['vr']})" for x in board_watch[:3]) if board_watch else "无") + "(仅打板资金,低吸不买)")
         giveup = [x for x in a_list if x.get("vr", 0) < 10]
         lines.append("- 放弃:" + ("、".join(f"{x['name']}(量比不足/题材弱)" for x in giveup[:4]) if giveup else "无"))
         lines.append("- 回避:" + "、".join(f"{x['name']}" for x in b_list[:4]) + "(一字/高开/高标)")
