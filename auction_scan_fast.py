@@ -307,7 +307,6 @@ def main():
             else:
                 g = "A级" if x["score"] >= 4 else "B级"
                 lines.append(f"{i}. {g} {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 昨{x['ps']}板 — 打板观察(秒封才上,炸板走人)")
-        lines.append("打板优先级:" + " > ".join(x["name"] for x in board_list[:5]))
 
     # —— 出手清单·总结排序(按优先级排序,30秒完成决策) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
@@ -327,6 +326,10 @@ def main():
         lines.append("- 放弃:" + ("、".join(f"{x['name']}(量比不足/题材弱)" for x in giveup[:4]) if giveup else "无"))
         lines.append("- 回避:" + "、".join(f"{x['name']}" for x in b_list[:4]) + "(一字/高开/高标)")
         lines.append("- 今日核心动作:低吸" + (top_s['name'] if top_s else "待确认") + ",打板看" + (board_watch[0]['name'] if board_watch else "无") + ";仓位≤5成")
+    # —— 压轴:打板优先级(用户要求放在推送最后一行) ——
+    board_sorted = sorted(board_list, key=lambda x: -x["score"])
+    lines.append("**打板优先级:** " + (" > ".join(x["name"] for x in board_sorted[:5]) if board_sorted else "无"))
+
     text = "\n".join(lines)
     print(text)
 
