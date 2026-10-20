@@ -32,9 +32,14 @@ jobs:
             echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          # 等本机9:27规则引擎先跑完(含数据重试,最迟约9:30),9:32后再判定
+          while [[ "$NOW" < "09:32" ]]; do
+            sleep 20
+            NOW=$(TZ=Asia/Shanghai date +%H:%M)
+          done
           CODE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.github.com/repos/xiaoyao88888/auction-scan/contents/push_history/${D}.json")
           if [ "$CODE" = "200" ]; then
-            echo "marker exists, skip"
+            echo "fast engine already pushed, skip LLM"
             echo "run=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
