@@ -60,12 +60,39 @@ def call_tool(name, args):
         return txt
 
 
-def pull_with_retry(name, args, tries=3):
+def _data_ready(name, d):
+    """就绪判定:竞价池必须有过半数行带真实数值竞价涨幅+量比(排除999占位),
+    情绪面板必须有涨跌家数,响应中出现未就绪标记一律重试。"""
+    if not isinstance(d, dict):
+        return True
+    try:
+        raw = json.dumps(d, ensure_ascii=False)
+    except Exception:
+        raw = ""
+    if "AUCTION_DATA_NOT_READY" in raw or "MARKET_SUMMARY_NOT_READY" in raw:
+        return False
+    if name == "short_term_emotion":
+        b = (d.get("summary") or {}).get("breadth") or {}
+        return (b.get("up") or 0) + (b.get("down") or 0) > 0
+    rows = d.get("rows")
+    if rows is None:
+        return True
+    if len(rows) == 0:
+        return False
+    ok = 0
+    for r in rows[:15]:
+        cr = r.get("changeRate") if isinstance(r, dict) else None
+        vr = r.get("volumeRatio") if isinstance(r, dict) else None
+        if isinstance(cr, (int, float)) and abs(cr) < 100 and isinstance(vr, (int, float)) and vr > 0:
+            ok += 1
+    return ok >= max(1, min(3, len(rows) // 2))
+
+
+def pull_with_retry(name, args, tries=5):
     for i in range(tries):
         try:
             d = call_tool(name, args)
-            rows = d.get("rows") if isinstance(d, dict) else None
-            if rows is None or len(rows) > 0:
+            if _data_ready(name, d):
                 return d
             time.sleep(20)
         except Exception:
@@ -96,8 +123,14 @@ def main():
     date = datetime.datetime.now(tz).strftime("%Y-%m-%d")
     now_hm = datetime.datetime.now(tz).strftime("%H:%M")
     if not DRY and "--force" not in sys.argv and not ("09:27" <= now_hm <= "09:45"):
-        print(f"out of push window {now_hm}, skip")
-        return
+        if "09:25" <= now_hm < "09:27":
+            # 云端兜底被发令枪9:26:50唤醒,等到9:27:02再跑(本机已推则去重守卫会拦)
+            while datetime.datetime.now(tz).strftime("%H:%M") < "09:27":
+                time.sleep(2)
+            time.sleep(2)
+        else:
+            print(f"out of push window {now_hm}, skip")
+            return
     data, err = fetch_all(date)
     if err:
         print(err)
