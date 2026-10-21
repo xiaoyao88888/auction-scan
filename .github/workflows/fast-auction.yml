@@ -21,6 +21,7 @@ jobs:
 
       - name: Run fast scan (stdlib only, ~15s)
         env:
+          WUDAO_TOKEN: ${{ secrets.WUDAO_TOKEN }}
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           GH_PAT: ${{ secrets.GH_PAT }}
