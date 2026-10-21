@@ -1,1 +1,14 @@
-{"date": "2026-10-21", "stocks": []}
+{
+  "date": "2026-10-21",
+  "stocks": [
+    {"code": "003029", "name": "吉大正元", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "断板4板,拉萨三营业部接盘,次日易高开低走", "watchBuy": false},
+    {"code": "001323", "name": "慕思股份", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "断板2板,拉萨/散户接盘,无溢价风险", "watchBuy": false},
+    {"code": "301052", "name": "果麦文化", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "机构净卖+拉萨接盘,无溢价风险", "watchBuy": false},
+    {"code": "002343", "name": "慈文传媒", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "机构净卖+拉萨接盘,无溢价风险", "watchBuy": false},
+    {"code": "301591", "name": "肯特股份", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "机构全净卖,无溢价风险", "watchBuy": false},
+    {"code": "920096", "name": "嘉晨智能", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "散户席位接盘,无溢价风险", "watchBuy": false},
+    {"code": "920196", "name": "南方乳业", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "散户席位接盘,无溢价风险", "watchBuy": false},
+    {"code": "920162", "name": "莫森泰克", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "拉萨席位接盘,换手28.59%,无溢价风险", "watchBuy": false},
+    {"code": "002058", "name": "紫竹高科", "grade": "R", "refPrice": null, "prevClose": null, "signals": "", "note": "拉萨席位接盘,无溢价风险", "watchBuy": false}
+  ]
+}
