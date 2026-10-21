@@ -60,39 +60,47 @@ def call_tool(name, args):
         return txt
 
 
-def _data_ready(name, d):
-    """就绪判定:竞价池必须有过半数行带真实数值竞价涨幅+量比(排除999占位),
-    情绪面板必须有涨跌家数,响应中出现未就绪标记一律重试。"""
+def _data_ready(name, d, date):
+    """就绪判定:未就绪一律重试。
+    - 竞价池/梯队/题材:rows必须存在且非空,竞价池还要求过半数行带真实数值竞价涨幅+量比
+    - 情绪面板:必须有涨跌家数,且快照必须是今日9:25之后落盘
+    - 响应中出现NOT_READY标记一律重试(2026-10-21教训:数据未落盘时rows缺失,
+      旧逻辑把rows=None当就绪,导致9:27:06发出空壳推送)"""
     if not isinstance(d, dict):
         return True
     try:
         raw = json.dumps(d, ensure_ascii=False)
     except Exception:
         raw = ""
-    if "AUCTION_DATA_NOT_READY" in raw or "MARKET_SUMMARY_NOT_READY" in raw:
+    if "NOT_READY" in raw:
         return False
     if name == "short_term_emotion":
         b = (d.get("summary") or {}).get("breadth") or {}
-        return (b.get("up") or 0) + (b.get("down") or 0) > 0
-    rows = d.get("rows")
-    if rows is None:
+        if (b.get("up") or 0) + (b.get("down") or 0) <= 0:
+            return False
+        st = d.get("snapshotTime") or ""
+        if st and st < f"{date}T01:25":   # 北京9:25前的旧快照不可用
+            return False
         return True
-    if len(rows) == 0:
+    rows = d.get("rows")
+    if not rows:                          # 缺失或空池=未就绪(核心修复)
         return False
-    ok = 0
-    for r in rows[:15]:
-        cr = r.get("changeRate") if isinstance(r, dict) else None
-        vr = r.get("volumeRatio") if isinstance(r, dict) else None
-        if isinstance(cr, (int, float)) and abs(cr) < 100 and isinstance(vr, (int, float)) and vr > 0:
-            ok += 1
-    return ok >= max(1, min(3, len(rows) // 2))
+    if name == "auction_market_scan":
+        ok = 0
+        for r in rows[:15]:
+            cr = r.get("changeRate") if isinstance(r, dict) else None
+            vr = r.get("volumeRatio") if isinstance(r, dict) else None
+            if isinstance(cr, (int, float)) and abs(cr) < 100 and isinstance(vr, (int, float)) and vr > 0:
+                ok += 1
+        return ok >= max(1, min(3, len(rows) // 2))
+    return True
 
 
-def pull_with_retry(name, args, tries=5):
+def pull_with_retry(name, args, date, tries=8):
     for i in range(tries):
         try:
             d = call_tool(name, args)
-            if _data_ready(name, d):
+            if _data_ready(name, d, date):
                 return d
             time.sleep(20)
         except Exception:
@@ -104,16 +112,16 @@ def fetch_all(date):
     cal = call_tool("trading_calendar", {"date": date})
     if not (isinstance(cal, dict) and cal.get("isTradingDay")):
         return None, "非交易日"
-    emo = pull_with_retry("short_term_emotion", {"tradeDate": date})
+    emo = pull_with_retry("short_term_emotion", {"tradeDate": date}, date)
     broken = pull_with_retry("auction_market_scan",
                              {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
-                              "pool": "broken_limit_up_prev", "excludeST": True})
+                              "pool": "broken_limit_up_prev", "excludeST": True}, date)
     prev = pull_with_retry("auction_market_scan",
                            {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
-                            "pool": "limit_up_prev", "excludeST": True})
-    ladder = call_tool("limit_up_ladder", {"date": date, "maxRowsPerLevel": 40})
-    theme = call_tool("theme_intraday_capital",
-                      {"tradeDate": date, "universe": "featured", "limit": 10})
+                            "pool": "limit_up_prev", "excludeST": True}, date)
+    ladder = pull_with_retry("limit_up_ladder", {"date": date, "maxRowsPerLevel": 40}, date, tries=6)
+    theme = pull_with_retry("theme_intraday_capital",
+                            {"tradeDate": date, "universe": "featured", "limit": 10}, date, tries=6)
     return {"emo": emo, "broken": broken, "prev": prev, "ladder": ladder, "theme": theme}, None
 
 
