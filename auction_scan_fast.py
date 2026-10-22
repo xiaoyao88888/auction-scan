@@ -67,7 +67,8 @@ def _data_ready(name, d, date):
     - 响应中出现NOT_READY标记一律重试(2026-10-21教训:数据未落盘时rows缺失,
       旧逻辑把rows=None当就绪,导致9:27:06发出空壳推送)"""
     if not isinstance(d, dict):
-        return True
+        return False   # 2026-10-22教训:数据未落盘时MCP返回 data:null,
+                       # 旧逻辑把None当就绪,无重试直接发空壳
     try:
         raw = json.dumps(d, ensure_ascii=False)
     except Exception:
@@ -119,6 +120,17 @@ def fetch_all(date):
     prev = pull_with_retry("auction_market_scan",
                            {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
                             "pool": "limit_up_prev", "excludeST": True}, date)
+    # 双保险:昨涨停池永不应当为空,为空说明数据未落盘,等30秒再重抓一轮(最多3轮)
+    for _rnd in range(3):
+        if (prev or {}).get("rows"):
+            break
+        time.sleep(30)
+        broken = pull_with_retry("auction_market_scan",
+                                 {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                                  "pool": "broken_limit_up_prev", "excludeST": True}, date)
+        prev = pull_with_retry("auction_market_scan",
+                               {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                                "pool": "limit_up_prev", "excludeST": True}, date)
     ladder = pull_with_retry("limit_up_ladder", {"date": date, "maxRowsPerLevel": 40}, date, tries=6)
     theme = pull_with_retry("theme_intraday_capital",
                             {"tradeDate": date, "universe": "featured", "limit": 10}, date, tries=6)
@@ -345,6 +357,13 @@ def main():
 
     text = "\n".join(lines)
     print(text)
+    # 每次运行落盘本地取证日志
+    try:
+        _logp = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"push_output_{date.replace('-', '')}.txt")
+        with open(_logp, "a", encoding="utf-8") as _f:
+            _f.write(f"\n===== {datetime.datetime.now(tz).strftime('%H:%M:%S')} {'DRY' if DRY else 'REAL'} =====\n{text}\n")
+    except Exception:
+        pass
 
     if DRY:
         print("\n[dry-run] 未发送")
