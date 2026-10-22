@@ -115,10 +115,10 @@ def fetch_all(date):
         return None, "非交易日"
     emo = pull_with_retry("short_term_emotion", {"tradeDate": date}, date)
     broken = pull_with_retry("auction_market_scan",
-                             {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                             {"tradeDate": date, "sortBy": "bidStrength", "limit": 30,
                               "pool": "broken_limit_up_prev", "excludeST": True}, date)
     prev = pull_with_retry("auction_market_scan",
-                           {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                           {"tradeDate": date, "sortBy": "bidStrength", "limit": 30,
                             "pool": "limit_up_prev", "excludeST": True}, date)
     # 双保险:昨涨停池永不应当为空,为空说明数据未落盘,等30秒再重抓一轮(最多3轮)
     for _rnd in range(3):
@@ -126,10 +126,10 @@ def fetch_all(date):
             break
         time.sleep(30)
         broken = pull_with_retry("auction_market_scan",
-                                 {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                                 {"tradeDate": date, "sortBy": "bidStrength", "limit": 30,
                                   "pool": "broken_limit_up_prev", "excludeST": True}, date)
         prev = pull_with_retry("auction_market_scan",
-                               {"tradeDate": date, "sortBy": "bidStrength", "limit": 15,
+                               {"tradeDate": date, "sortBy": "bidStrength", "limit": 30,
                                 "pool": "limit_up_prev", "excludeST": True}, date)
     ladder = pull_with_retry("limit_up_ladder", {"date": date, "maxRowsPerLevel": 40}, date, tries=6)
     theme = pull_with_retry("theme_intraday_capital",
@@ -219,7 +219,7 @@ def main():
     s_list, a_list, b_list, board_list = [], [], [], []
     seen = set()
     for pool, tag in ((prev, "昨涨停"), (broken, "昨炸板")):
-        for r in (pool or {}).get("rows", [])[:15]:
+        for r in (pool or {}).get("rows", [])[:30]:
             code = r.get("code")
             if code in seen:
                 continue
@@ -240,23 +240,63 @@ def main():
             if tag == "昨涨停":
                 cr, vr = r.get("changeRate", 0), r.get("volumeRatio", 0)
                 if r.get("isLimitUpOpen"):
+                    lbs0 = r.get("limitBuyStrength") or 0
                     board_list.append({"name": r.get("name"), "code": code,
                                        "kind": "一字", "cr": cr, "vr": vr,
+                                       "lbs": lbs0,
                                        "seal": (r.get("limitBuyAmountAfter920") or 0) / 1e8,
+                                       "mcap": round((r.get("circMcap") or 0) / 1e8),
                                        "ps": r.get("prevStreak", 0),
                                        "themes": list(themes_of(r)),
-                                       "score": 10 + (r.get("limitBuyAmountAfter920") or 0) / 1e10})
+                                       "score": 20 + lbs0 / 100})
                 elif 5 <= cr <= 9.9 and (vr or 0) >= 10:
                     sc = 3 if r.get("prevStreak", 0) + 1 <= 2 else (2 if r.get("prevStreak", 0) + 1 == 3 else 1)
+                    # 封板概率核心信号(2026-10-22教训:日海委买萎缩至1/6大面-3%,
+                    # 百洋委买暴增5.4倍封板;量比87的极端放量实为分歧出货)
+                    lbs = r.get("limitBuyStrength") or 0
+                    if lbs >= 150:
+                        sc += 3
+                    elif lbs >= 100:
+                        sc += 2
+                    elif lbs >= 50:
+                        sc += 1
+                    elif lbs < 20:
+                        sc -= 1          # 涨停价无人排队=封板无承接
+                    pre_lb = r.get("preLimitBuyAmount") or 0
+                    lb = r.get("limitBuyAmount") or 0
+                    if pre_lb > 0 and lb > 0:
+                        ratio = lb / pre_lb
+                        if ratio >= 2:
+                            sc += 2          # 涨停委买环比翻倍=资金加码
+                        elif ratio >= 1:
+                            sc += 1
+                        else:
+                            sc -= 1          # 委买萎缩=资金撤退
+                    if cr >= 7:
+                        sc += 2              # 竞价越高越接近封板
+                    else:
+                        sc += 1
+                    if 10 <= (vr or 0) < 50:
+                        sc += 1              # 健康放量
+                    elif (vr or 0) >= 50:
+                        sc -= 1              # 极端放量=分歧出货嫌疑
                     if themes_of(r) & set(top5) | themes_of(r) & set(top3):
                         sc += 1
-                    if (vr or 0) >= 20:
-                        sc += 1
+                    if r.get("openBidSignal") == "late_bid_up":
+                        sc += 1              # 尾秒抢筹=封板强确认
                     if r.get("openBidSignal") == "late_bid_down":
                         sc -= 1
+                    mcap_yi = (r.get("circMcap") or 0) / 1e8
+                    if mcap_yi <= 50:
+                        sc += 1              # 小流通盘易封板
+                    elif mcap_yi >= 200:
+                        sc -= 1              # 大流通盘封板需巨量资金
+                    lb_ratio = (lb / pre_lb) if (pre_lb or 0) > 0 and (lb or 0) > 0 else None
                     board_list.append({"name": r.get("name"), "code": code,
                                        "kind": "高开", "cr": cr, "vr": vr,
+                                       "lbs": r.get("limitBuyStrength") or 0,
                                        "seal": 0, "ps": r.get("prevStreak", 0),
+                                       "mcap": round(mcap_yi), "lb_ratio": lb_ratio,
                                        "themes": list(themes_of(r)), "score": sc})
 
     s_list = sorted(s_list, key=lambda x: -x.get("vr", 0))[:2]
@@ -325,11 +365,15 @@ def main():
         lines.append("**【打板排序】**(仅打板资金参与,低吸者一律不碰)")
         for i, x in enumerate(board_sorted, 1):
             if x["kind"] == "一字":
-                g = "S级"
-                lines.append(f"{i}. {g} {x['name']}({x['code']}) 涨停开一字 委买{x['seal']:.1f}亿 昨{x['ps']}板 — 排板(买不进,挂单等炸板回封)")
+                g = "S级" if (x.get("lbs") or 0) >= 300 else "A级弱一字"
+                tip = "排板(买不进,挂单等炸板回封)" if g == "S级" else "弱封(开板概率大,炸板回封再打)"
+                lines.append(f"{i}. {g} {x['name']}({x['code']}) 涨停开一字 委强{x.get('lbs', 0):.0f} 流通{x.get('mcap', 0)}亿 昨{x['ps']}板 — {tip}")
             else:
-                g = "A级" if x["score"] >= 4 else "B级"
-                lines.append(f"{i}. {g} {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 昨{x['ps']}板 — 打板观察(秒封才上,炸板走人)")
+                g = "A级" if x["score"] >= 5 else "B级"
+                extra = ""
+                if x.get("lb_ratio") is not None:
+                    extra = "委买翻倍" if x["lb_ratio"] >= 2 else ("委买萎缩" if x["lb_ratio"] < 1 else "")
+                lines.append(f"{i}. {g} {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 委强{x.get('lbs', 0):.0f} 流通{x.get('mcap', 0)}亿 昨{x['ps']}板{' ' + extra if extra else ''} — 打板观察(秒封才上,炸板走人)")
 
     # —— 出手清单·总结排序(与打板排序同一数据源,名单互斥不重复) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
@@ -344,7 +388,7 @@ def main():
         # 可操作日:完整出手清单
         top_s = s_list[0] if s_list else None
         lines.append("- 低吸首选:" + (f"{top_s['name']}(回踩{top_s['ref']}不破,买入≤竞价价+1%;出场:尾盘≥3%减半/次日+2%不封走/破买价3%止损)" if top_s else "无"))
-        lines.append("- 打板观察:" + (" > ".join(f"{x['name']}({x['cr']:.1f}%+量比{x['vr']})" for x in board_chase[:3]) if board_chase else "无") + "(仅打板资金,低吸不买)")
+        lines.append("- 打板观察:" + (" > ".join(f"{x['name']}({x['cr']:.1f}%+委强{x.get('lbs', 0):.0f})" for x in board_chase[:3]) if board_chase else "无") + "(仅打板资金,低吸不买)")
         if board_seal:
             lines.append("- 排板挂单:" + "、".join(f"{x['name']}(委买{x['seal']:.1f}亿)" for x in board_seal[:3]) + "(一字买不进,炸板回封才接)")
         giveup = [x for x in a_list if x.get("vr", 0) < 10]
