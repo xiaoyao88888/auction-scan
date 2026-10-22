@@ -113,6 +113,17 @@ def fetch_all(date):
     cal = call_tool("trading_calendar", {"date": date})
     if not (isinstance(cal, dict) and cal.get("isTradingDay")):
         return None, "非交易日"
+    # 前一交易日(周末/节假回溯)
+    prev_date = None
+    d = datetime.datetime.strptime(date, "%Y-%m-%d")
+    for back in range(1, 8):
+        dd = (d - datetime.timedelta(days=back)).strftime("%Y-%m-%d")
+        c = call_tool("trading_calendar", {"date": dd})
+        if isinstance(c, dict) and c.get("isTradingDay"):
+            prev_date = dd
+            break
+    evts = pull_with_retry("limit_up_filter",
+                           {"date": prev_date or date, "limit": 100, "sortBy": "continue_num"}, date)
     emo = pull_with_retry("short_term_emotion", {"tradeDate": date}, date)
     broken = pull_with_retry("auction_market_scan",
                              {"tradeDate": date, "sortBy": "bidStrength", "limit": 30,
@@ -134,7 +145,8 @@ def fetch_all(date):
     ladder = pull_with_retry("limit_up_ladder", {"date": date, "maxRowsPerLevel": 40}, date, tries=6)
     theme = pull_with_retry("theme_intraday_capital",
                             {"tradeDate": date, "universe": "featured", "limit": 10}, date, tries=6)
-    return {"emo": emo, "broken": broken, "prev": prev, "ladder": ladder, "theme": theme}, None
+    return {"emo": emo, "broken": broken, "prev": prev, "ladder": ladder, "theme": theme,
+            "evts": evts}, None
 
 
 
@@ -157,6 +169,48 @@ def main():
         return
 
     emo, broken, prev, ladder, theme = data["emo"], data["broken"], data["prev"], data["ladder"], data["theme"]
+    evts = data.get("evts") or {}
+    # 昨日封板质量映射(2026-10-22深挖790样本:首封越早/换手越低/封单越大→次日溢价越高)
+    qual = {}
+    for e in (evts.get("rows") or []):
+        cv = e.get("currencyValue") or 0
+        qual[e.get("code")] = {
+            "ft": e.get("firstLimitUpTimeText") or "",
+            "tr": e.get("turnoverRate") or 0,
+            "sr": ((e.get("orderAmount") or 0) / cv) if cv > 0 else None,
+            "on": e.get("openNum") or 0,
+            "yizi": (e.get("limitUpType") == "一字板")}
+
+    def seal_q(code):
+        q = qual.get(code)
+        if not q:
+            return 0
+        b = 0
+        ft = q["ft"]
+        if q["yizi"] or ft == "09:25:00":
+            b += 3                       # 昨一字秒封
+        elif ft <= "10:00:00":
+            b += 2                       # 早盘封
+        elif ft <= "11:30:00":
+            b += 1
+        elif ft > "14:30:00":
+            b -= 2                       # 尾盘偷袭板次日必弱
+        tr = q["tr"]
+        if tr > 0:
+            if tr < 5:
+                b += 2                   # 缩量板筹码锁定
+            elif tr < 15:
+                b += 1
+            elif tr < 30:
+                b -= 1                   # 高换手烂板
+        if q["sr"] is not None:
+            if q["sr"] >= 0.10:
+                b += 2                   # 封单占流通≥10%
+            elif q["sr"] >= 0.05:
+                b += 1
+        if q["on"] >= 2:
+            b -= 1                       # 反复炸板
+        return max(-2, min(2, b))        # 昨日质量是辅助信号,封顶±2
     s = emo.get("summary", {})
     sealed, broken_rate = s.get("sealedLimitUp", 0), s.get("brokenBoardRate", 0)
     highest, prom = s.get("highestBoard", 0), s.get("promotionRates", {})
@@ -248,7 +302,7 @@ def main():
                                        "mcap": round((r.get("circMcap") or 0) / 1e8),
                                        "ps": r.get("prevStreak", 0),
                                        "themes": list(themes_of(r)),
-                                       "score": 20 + lbs0 / 100})
+                                       "score": 20 + lbs0 / 100 + seal_q(code)})
                 elif 5 <= cr <= 9.9 and (vr or 0) >= 10:
                     sc = 3 if r.get("prevStreak", 0) + 1 <= 2 else (2 if r.get("prevStreak", 0) + 1 == 3 else 1)
                     # 封板概率核心信号(2026-10-22教训:日海委买萎缩至1/6大面-3%,
@@ -261,7 +315,7 @@ def main():
                     elif lbs >= 50:
                         sc += 1
                     elif lbs < 20:
-                        sc -= 1          # 涨停价无人排队=封板无承接
+                        sc -= 2          # 涨停价无人排队=封板无承接(今日无确认)
                     pre_lb = r.get("preLimitBuyAmount") or 0
                     lb = r.get("limitBuyAmount") or 0
                     if pre_lb > 0 and lb > 0:
@@ -270,8 +324,10 @@ def main():
                             sc += 2          # 涨停委买环比翻倍=资金加码
                         elif ratio >= 1:
                             sc += 1
+                        elif ratio >= 0.5:
+                            sc -= 1
                         else:
-                            sc -= 1          # 委买萎缩=资金撤退
+                            sc -= 2          # 委买腰斩=资金撤退确认
                     if cr >= 7:
                         sc += 2              # 竞价越高越接近封板
                     else:
@@ -279,18 +335,20 @@ def main():
                     if 10 <= (vr or 0) < 50:
                         sc += 1              # 健康放量
                     elif (vr or 0) >= 50:
-                        sc -= 1              # 极端放量=分歧出货嫌疑
+                        sc -= 2              # 极端放量=分歧出货嫌疑
                     if themes_of(r) & set(top5) | themes_of(r) & set(top3):
                         sc += 1
                     if r.get("openBidSignal") == "late_bid_up":
                         sc += 1              # 尾秒抢筹=封板强确认
                     if r.get("openBidSignal") == "late_bid_down":
-                        sc -= 1
+                        sc -= 2              # 尾秒撤退对打板是致命信号
                     mcap_yi = (r.get("circMcap") or 0) / 1e8
                     if mcap_yi <= 50:
                         sc += 1              # 小流通盘易封板
                     elif mcap_yi >= 200:
                         sc -= 1              # 大流通盘封板需巨量资金
+                    if lbs >= 20:
+                        sc += seal_q(code)  # 昨日封板质量:仅今日竞价有确认(委强≥20)才计入
                     lb_ratio = (lb / pre_lb) if (pre_lb or 0) > 0 and (lb or 0) > 0 else None
                     board_list.append({"name": r.get("name"), "code": code,
                                        "kind": "高开", "cr": cr, "vr": vr,
