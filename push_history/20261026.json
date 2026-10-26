@@ -1,1 +1,214 @@
-{"date": "2026-10-26", "stocks": [{"code": "002307", "name": "北新路桥", "grade": "A", "refPrice": 3.39, "prevClose": 3.46, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "301428", "name": "世纪恒通", "grade": "A", "refPrice": 33.47, "prevClose": 32.64, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "002077", "name": "大港股份", "grade": "A", "refPrice": 13.68, "prevClose": 13.08, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "600506", "name": "统一股份", "grade": "A", "refPrice": 17.33, "prevClose": 16.83, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "300561", "name": "汇金科技", "grade": "A", "refPrice": 14.9, "prevClose": 15.6, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "603721", "name": "中广天择", "grade": "A", "refPrice": 22.61, "prevClose": 21.77, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "002421", "name": "达实智能", "grade": "A", "refPrice": 3.48, "prevClose": 3.43, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "300296", "name": "利亚德", "grade": "A", "refPrice": 7.25, "prevClose": 7.32, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "301699", "name": "洛轴股份", "grade": "A", "refPrice": 34.02, "prevClose": 33.42, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "688836", "name": "宇树科技", "grade": "A", "refPrice": 624.0, "prevClose": 624.0, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}]}
+{
+  "date": "2026-10-26",
+  "stocks": [
+    {
+      "code": "002307",
+      "name": "北新路桥",
+      "grade": "A",
+      "refPrice": 3.39,
+      "prevClose": 3.46,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "301428",
+      "name": "世纪恒通",
+      "grade": "A",
+      "refPrice": 33.47,
+      "prevClose": 32.64,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "上榜,游资买卖互现(山南香曲东路/开源西大街卖出),不支持持仓,逢高兑现"
+    },
+    {
+      "code": "002077",
+      "name": "大港股份",
+      "grade": "A",
+      "refPrice": 13.68,
+      "prevClose": 13.08,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "600506",
+      "name": "统一股份",
+      "grade": "A",
+      "refPrice": 17.33,
+      "prevClose": 16.83,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "300561",
+      "name": "汇金科技",
+      "grade": "A",
+      "refPrice": 14.9,
+      "prevClose": 15.6,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "603721",
+      "name": "中广天择",
+      "grade": "A",
+      "refPrice": 22.61,
+      "prevClose": 21.77,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "002421",
+      "name": "达实智能",
+      "grade": "A",
+      "refPrice": 3.48,
+      "prevClose": 3.43,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "上榜,深股通/机构/游资净卖-1.52亿,无溢价,逢高兑现"
+    },
+    {
+      "code": "300296",
+      "name": "利亚德",
+      "grade": "A",
+      "refPrice": 7.25,
+      "prevClose": 7.32,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "301699",
+      "name": "洛轴股份",
+      "grade": "A",
+      "refPrice": 34.02,
+      "prevClose": 33.42,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "上榜,拉萨金珠西路/开源西大街净卖,无溢价,逢高兑现"
+    },
+    {
+      "code": "688836",
+      "name": "宇树科技",
+      "grade": "A",
+      "refPrice": 624.0,
+      "prevClose": 624.0,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false,
+      "dragonNote": "未上榜,按竞价逻辑原策略执行"
+    },
+    {
+      "code": "301502",
+      "name": "华阳智能",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "3板机器人,华鑫瑞平路+机构净卖-0.31亿,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "002931",
+      "name": "锋龙股份",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "2板机器人,深股通净卖-0.34亿,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "002535",
+      "name": "林州重机",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "3板专用设备,开源西大街/华鑫瑞平路游资出逃,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "000678",
+      "name": "襄阳轴承",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "3板机器人,开源西大街/国新北京净卖,分歧",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "002343",
+      "name": "慈文传媒",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "拉萨天团系列接盘,跌停,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "000530",
+      "name": "冰山冷热",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "拉萨天团系列接盘,跌停,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "000993",
+      "name": "闽东电力",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "拉萨天团系列,大跌,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "920285",
+      "name": "远大健科",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "拉萨天团系列,-29.19%,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    },
+    {
+      "code": "920157",
+      "name": "宇特光电",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": null,
+      "note": "拉萨天团系列,-16.11%,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价风险,次日易高开低走,仅卖点监控无买点"
+    }
+  ]
+}
