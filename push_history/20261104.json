@@ -1,0 +1,265 @@
+{
+  "date": "2026-11-04",
+  "stocks": [
+    {
+      "code": "601599",
+      "name": "浙文影业",
+      "grade": "A",
+      "refPrice": 3.99,
+      "prevClose": 3.82,
+      "signals": "满足3条",
+      "note": "昨涨停·主线",
+      "watchBuy": false
+    },
+    {
+      "code": "600576",
+      "name": "祥源文旅",
+      "grade": "A",
+      "refPrice": 5.08,
+      "prevClose": 5.47,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "603628",
+      "name": "清源股份",
+      "grade": "A",
+      "refPrice": 10.12,
+      "prevClose": 10.27,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "000819",
+      "name": "岳阳兴长",
+      "grade": "A",
+      "refPrice": 11.78,
+      "prevClose": 12.18,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "002094",
+      "name": "青岛金王",
+      "grade": "A",
+      "refPrice": 4.66,
+      "prevClose": 4.82,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "001230",
+      "name": "劲旅环境",
+      "grade": "A",
+      "refPrice": 16.05,
+      "prevClose": 17.01,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "600558",
+      "name": "大西洋",
+      "grade": "A",
+      "refPrice": 6.18,
+      "prevClose": 6.24,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "watchBuy": false
+    },
+    {
+      "code": "301513",
+      "name": "尚水智能",
+      "grade": "A",
+      "refPrice": 56.87,
+      "prevClose": 54.78,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "watchBuy": false
+    },
+    {
+      "code": "300426",
+      "name": "华智数媒",
+      "grade": "A",
+      "refPrice": 8.8,
+      "prevClose": 9.0,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "600715",
+      "name": "文投控股",
+      "grade": "A",
+      "refPrice": 2.43,
+      "prevClose": 2.46,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "watchBuy": false
+    },
+    {
+      "code": "002172",
+      "name": "澳洋健康",
+      "grade": "A",
+      "refPrice": 6.56,
+      "prevClose": 6.8,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "002425",
+      "name": "凯撒文化",
+      "grade": "A",
+      "refPrice": 3.28,
+      "prevClose": 3.35,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "300739",
+      "name": "明阳电路",
+      "grade": "A",
+      "refPrice": 24.94,
+      "prevClose": 26.0,
+      "signals": "满足2条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "603533",
+      "name": "掌阅科技",
+      "grade": "A",
+      "refPrice": 28.72,
+      "prevClose": 28.72,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "600506",
+      "name": "统一股份",
+      "grade": "A",
+      "refPrice": 19.02,
+      "prevClose": 19.52,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "002343",
+      "name": "慈文传媒",
+      "grade": "A",
+      "refPrice": 8.37,
+      "prevClose": 8.3,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "watchBuy": false
+    },
+    {
+      "code": "002172",
+      "name": "澳洋健康",
+      "grade": "W",
+      "refPrice": 6.56,
+      "prevClose": 6.8,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "600576",
+      "name": "祥源文旅",
+      "grade": "W",
+      "refPrice": 5.08,
+      "prevClose": 5.47,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002094",
+      "name": "青岛金王",
+      "grade": "W",
+      "refPrice": 4.66,
+      "prevClose": 4.82,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "300426",
+      "name": "华智数媒",
+      "grade": "W",
+      "refPrice": 8.8,
+      "prevClose": 9.0,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "001230",
+      "name": "劲旅环境",
+      "grade": "W",
+      "refPrice": 16.05,
+      "prevClose": 17.01,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "603533",
+      "name": "掌阅科技",
+      "grade": "W",
+      "refPrice": 28.72,
+      "prevClose": 28.72,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "600506",
+      "name": "统一股份",
+      "grade": "W",
+      "refPrice": 19.02,
+      "prevClose": 19.52,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "300739",
+      "name": "明阳电路",
+      "grade": "W",
+      "refPrice": 24.94,
+      "prevClose": 26.0,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "002425",
+      "name": "凯撒文化",
+      "grade": "W",
+      "refPrice": 3.28,
+      "prevClose": 3.35,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    },
+    {
+      "code": "000819",
+      "name": "岳阳兴长",
+      "grade": "W",
+      "refPrice": 11.78,
+      "prevClose": 12.18,
+      "signals": "尾抢低开",
+      "note": "站上竞价价2%确认",
+      "watchBuy": true
+    }
+  ]
+}
