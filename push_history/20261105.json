@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-05",
+  "stocks": [
+    {"code":"000679","name":"大连友谊","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨团结路第一主导,今日近跌停-9.75%,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"000678","name":"襄阳轴承","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨东环路第二主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"000530","name":"冰山冷热","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨金融城南环路主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"002652","name":"扬子新材","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨东环路第二主导,昨2板今日断板,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"301052","name":"果麦文化","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨东环路第二主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"301513","name":"尚水智能","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨金融城南环路主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"301569","name":"联亚药业","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨金融城南环路主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"301520","name":"万邦医药","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨东环路第二主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false},
+    {"code":"920296","name":"文峰光电","grade":"R","refPrice":null,"prevClose":null,"signals":"龙虎榜拉萨天团主导","note":"拉萨金融城南环路主导,散户席位,次日易高开低走,仅卖点监控无买点","watchBuy":false}
+  ]
+}
