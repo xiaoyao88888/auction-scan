@@ -420,18 +420,25 @@ def main():
     board_seal = [x for x in board_sorted if x["kind"] == "一字"]    # 排板:涨停开一字
     board_codes = {x["code"] for x in board_sorted}
     if board_sorted:
-        lines.append("**【打板排序】**(仅打板资金参与,低吸者一律不碰)")
-        for i, x in enumerate(board_sorted, 1):
-            if x["kind"] == "一字":
-                g = "S级" if (x.get("lbs") or 0) >= 300 else "A级弱一字"
-                tip = "排板(买不进,挂单等炸板回封)" if g == "S级" else "弱封(开板概率大,炸板回封再打)"
-                lines.append(f"{i}. {g} {x['name']}({x['code']}) 涨停开一字 委强{x.get('lbs', 0):.0f} 流通{x.get('mcap', 0)}亿 昨{x['ps']}板 — {tip}")
-            else:
+        # 2026-11-10教训:一字票对打板资金本质不可交易(炸板吃面或排不进),
+        # 可进场的只有高开票——独立成"可进场"区块放最前,一字票降为排板观察
+        lines.append(f"**【打板排序·可进场】**(仅打板资金;{'⚠️环境冰点(涨停{sealed}),今日打板胜率极低,只观察不动手' if not actionable else '秒封才上,炸板走人'})")
+        if board_chase:
+            for i, x in enumerate(board_chase, 1):
                 g = "A级" if x["score"] >= 5 else "B级"
                 extra = ""
                 if x.get("lb_ratio") is not None:
                     extra = "委买翻倍" if x["lb_ratio"] >= 2 else ("委买萎缩" if x["lb_ratio"] < 1 else "")
                 lines.append(f"{i}. {g} {x['name']}({x['code']}) 竞价+{x['cr']:.1f}% 量比{x['vr']} 委强{x.get('lbs', 0):.0f} 流通{x.get('mcap', 0)}亿 昨{x['ps']}板{' ' + extra if extra else ''} — 打板观察(秒封才上,炸板走人)")
+        else:
+            lines.append("无")
+        if board_seal:
+            lines.append("**【排板观察】**(一字买不进;" + ("环境冰点易炸,不排不接" if not actionable else "炸板回封才上") + ")")
+            for i, x in enumerate(board_seal, 1):
+                g = "S级" if (x.get("lbs") or 0) >= 300 else "A级弱一字"
+                tip = ("环境冰点易炸,不排不接" if not actionable
+                       else ("排板(买不进,挂单等炸板回封)" if g == "S级" else "弱封(开板概率大,炸板回封再打)"))
+                lines.append(f"{i}. {g} {x['name']}({x['code']}) 涨停开一字 委强{x.get('lbs', 0):.0f} 流通{x.get('mcap', 0)}亿 昨{x['ps']}板 — {tip}")
 
     # —— 出手清单·总结排序(与打板排序同一数据源,名单互斥不重复) ——
     lines.append("**【操作总结·出手清单】(按优先级排序)**")
@@ -448,14 +455,15 @@ def main():
         lines.append("- 低吸首选:" + (f"{top_s['name']}(回踩{top_s['ref']}不破,买入≤竞价价+1%;出场:尾盘≥3%减半/次日+2%不封走/破买价3%止损)" if top_s else "无"))
         lines.append("- 打板观察:" + (" > ".join(f"{x['name']}({x['cr']:.1f}%+委强{x.get('lbs', 0):.0f})" for x in board_chase[:3]) if board_chase else "无") + "(仅打板资金,低吸不买)")
         if board_seal:
-            lines.append("- 排板挂单:" + "、".join(f"{x['name']}(委买{x['seal']:.1f}亿)" for x in board_seal[:3]) + "(一字买不进,炸板回封才接)")
+            lines.append("- 排板挂单:" + "、".join(f"{x['name']}(委强{x.get('lbs', 0):.0f})" for x in board_seal[:3]) + "(一字买不进,炸板回封才接)")
         giveup = [x for x in a_list if x.get("vr", 0) < 10]
         lines.append("- 放弃:" + ("、".join(f"{x['name']}(量比不足/题材弱)" for x in giveup[:4]) if giveup else "无"))
         avoid = [x for x in b_list if x["code"] not in board_codes]
         lines.append("- 回避:" + ("、".join(f"{x['name']}" for x in avoid[:4]) if avoid else "无") + "(高开/高标/尾撤,低吸不碰)")
         lines.append("- 今日核心动作:低吸" + (top_s['name'] if top_s else "待确认") + ",打板看" + (board_chase[0]['name'] if board_chase else "无") + ";仓位≤5成")
-    # —— 压轴:打板优先级(全部打板候选完整列出,与上面名单一致) ——
-    lines.append("**打板优先级:** " + (" > ".join(x["name"] for x in board_sorted) if board_sorted else "无"))
+    # —— 压轴:打板优先级(可进场票在前,排板票在后) ——
+    board_order = [x["name"] for x in board_chase] + [x["name"] for x in board_seal]
+    lines.append("**打板优先级:** " + (" > ".join(board_order) if board_order else "无"))
 
     text = "\n".join(lines)
     print(text)
