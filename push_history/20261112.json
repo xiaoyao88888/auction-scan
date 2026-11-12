@@ -1,1 +1,181 @@
-{"date": "2026-11-12", "stocks": [{"code": "600892", "name": "大晟文化", "grade": "S", "refPrice": 5.69, "prevClose": 5.81, "signals": "5条全满足", "note": "昨炸板", "watchBuy": false}, {"code": "002427", "name": "尤夫股份", "grade": "A", "refPrice": 4.48, "prevClose": 4.58, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "000888", "name": "峨眉山A", "grade": "A", "refPrice": 10.6, "prevClose": 10.57, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002697", "name": "红旗连锁", "grade": "A", "refPrice": 5.18, "prevClose": 5.27, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "603028", "name": "赛福天", "grade": "A", "refPrice": 8.19, "prevClose": 7.95, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "920157", "name": "宇特光电", "grade": "A", "refPrice": 57.0, "prevClose": 57.69, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "600860", "name": "京城股份", "grade": "A", "refPrice": 8.45, "prevClose": 8.61, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "301636", "name": "泽润新能", "grade": "A", "refPrice": 46.8, "prevClose": 47.2, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "603628", "name": "清源股份", "grade": "A", "refPrice": 11.08, "prevClose": 11.26, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "605598", "name": "上海港湾", "grade": "A", "refPrice": 29.2, "prevClose": 29.66, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "003032", "name": "传智教育", "grade": "A", "refPrice": 10.74, "prevClose": 11.11, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "600556", "name": "天下秀", "grade": "A", "refPrice": 5.31, "prevClose": 5.46, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}]}
+{
+  "date": "2026-11-12",
+  "stocks": [
+    {
+      "code": "600892",
+      "name": "大晟文化",
+      "grade": "S",
+      "refPrice": 5.69,
+      "prevClose": 5.81,
+      "signals": "5条全满足",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "002427",
+      "name": "尤夫股份",
+      "grade": "A",
+      "refPrice": 4.48,
+      "prevClose": 4.58,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "000888",
+      "name": "峨眉山A",
+      "grade": "A",
+      "refPrice": 10.6,
+      "prevClose": 10.57,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "002697",
+      "name": "红旗连锁",
+      "grade": "A",
+      "refPrice": 5.18,
+      "prevClose": 5.27,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "603028",
+      "name": "赛福天",
+      "grade": "A",
+      "refPrice": 8.19,
+      "prevClose": 7.95,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "dragonNote": "未上榜,今日-1.64%断板,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "920157",
+      "name": "宇特光电",
+      "grade": "A",
+      "refPrice": 57.0,
+      "prevClose": 57.69,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "dragonNote": "上榜!拉萨天团3席+换手62%,无溢价,提示明日逢高兑现不接力",
+      "watchBuy": false
+    },
+    {
+      "code": "600860",
+      "name": "京城股份",
+      "grade": "A",
+      "refPrice": 8.45,
+      "prevClose": 8.61,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "301636",
+      "name": "泽润新能",
+      "grade": "A",
+      "refPrice": 46.8,
+      "prevClose": 47.2,
+      "signals": "满足3条",
+      "note": "昨涨停",
+      "dragonNote": "未上榜,今日-8.58%触跌停,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "603628",
+      "name": "清源股份",
+      "grade": "A",
+      "refPrice": 11.08,
+      "prevClose": 11.26,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "605598",
+      "name": "上海港湾",
+      "grade": "A",
+      "refPrice": 29.2,
+      "prevClose": 29.66,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "003032",
+      "name": "传智教育",
+      "grade": "A",
+      "refPrice": 10.74,
+      "prevClose": 11.11,
+      "signals": "满足2条",
+      "note": "昨涨停",
+      "dragonNote": "未上榜,今日-5.85%深跌,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "600556",
+      "name": "天下秀",
+      "grade": "A",
+      "refPrice": 5.31,
+      "prevClose": 5.46,
+      "signals": "满足3条",
+      "note": "昨炸板",
+      "dragonNote": "未上榜,按竞价逻辑原策略执行",
+      "watchBuy": false
+    },
+    {
+      "code": "301520",
+      "name": "万邦医药",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨4席净买为主,机构净卖",
+      "watchBuy": false,
+      "dragonNote": "无溢价,仅卖点监控无买点"
+    },
+    {
+      "code": "001381",
+      "name": "皇冠新材",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨3席+换手40%,无溢价",
+      "watchBuy": false,
+      "dragonNote": "无溢价,仅卖点监控无买点"
+    },
+    {
+      "code": "920196",
+      "name": "南方乳业",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨2席+机构净卖",
+      "watchBuy": false,
+      "dragonNote": "无溢价,仅卖点监控无买点"
+    },
+    {
+      "code": "920021",
+      "name": "流金科技",
+      "grade": "R",
+      "refPrice": null,
+      "prevClose": null,
+      "signals": "龙虎榜无溢价风险",
+      "note": "拉萨2席+机构净卖",
+      "watchBuy": false,
+      "dragonNote": "无溢价,仅卖点监控无买点"
+    }
+  ]
+}
