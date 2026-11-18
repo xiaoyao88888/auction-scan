@@ -1,1 +1,366 @@
-{"date": "2026-11-18", "stocks": [{"code": "002897", "name": "意华股份", "grade": "S", "refPrice": 45.66, "prevClose": 45.9, "signals": "5条全满足", "note": "昨炸板", "watchBuy": false}, {"code": "600619", "name": "海立股份", "grade": "A", "refPrice": 13.5, "prevClose": 13.1, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "002983", "name": "芯瑞达", "grade": "A", "refPrice": 24.51, "prevClose": 23.96, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "002959", "name": "小熊电器", "grade": "A", "refPrice": 40.0, "prevClose": 39.9, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "000533", "name": "顺钠股份", "grade": "A", "refPrice": 10.11, "prevClose": 10.8, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "603078", "name": "江化微", "grade": "A", "refPrice": 25.4, "prevClose": 24.54, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "002331", "name": "皖通科技", "grade": "A", "refPrice": 7.09, "prevClose": 7.24, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002242", "name": "九阳股份", "grade": "A", "refPrice": 32.5, "prevClose": 31.52, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "600410", "name": "华胜天成", "grade": "A", "refPrice": 15.99, "prevClose": 15.29, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "600467", "name": "好当家", "grade": "A", "refPrice": 2.64, "prevClose": 2.75, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "002535", "name": "林州重机", "grade": "A", "refPrice": 2.79, "prevClose": 2.86, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "300721", "name": "怡达股份", "grade": "A", "refPrice": 17.21, "prevClose": 17.58, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002425", "name": "凯撒文化", "grade": "A", "refPrice": 4.53, "prevClose": 4.65, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002652", "name": "扬子新材", "grade": "A", "refPrice": 4.4, "prevClose": 4.4, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "600770", "name": "综艺股份", "grade": "A", "refPrice": 5.4, "prevClose": 5.53, "signals": "满足2条", "note": "昨炸板", "watchBuy": false}, {"code": "002843", "name": "泰嘉股份", "grade": "A", "refPrice": 16.39, "prevClose": 15.76, "signals": "满足3条", "note": "昨涨停", "watchBuy": false}, {"code": "002861", "name": "瀛通通讯", "grade": "A", "refPrice": 14.47, "prevClose": 14.96, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "600206", "name": "有研新材", "grade": "A", "refPrice": 40.01, "prevClose": 39.33, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "000628", "name": "高新发展", "grade": "A", "refPrice": 48.72, "prevClose": 48.71, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "000859", "name": "国风新材", "grade": "A", "refPrice": 8.12, "prevClose": 8.12, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "301395", "name": "仁信新材", "grade": "A", "refPrice": 18.0, "prevClose": 18.08, "signals": "满足2条", "note": "昨炸板", "watchBuy": false}, {"code": "688372", "name": "伟测科技", "grade": "A", "refPrice": 90.2, "prevClose": 87.19, "signals": "满足2条", "note": "昨炸板", "watchBuy": false}, {"code": "301421", "name": "波长光电", "grade": "A", "refPrice": 77.54, "prevClose": 78.0, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "601133", "name": "柏诚股份", "grade": "A", "refPrice": 16.91, "prevClose": 16.9, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002889", "name": "东方嘉盛", "grade": "A", "refPrice": 14.91, "prevClose": 15.21, "signals": "满足2条", "note": "昨涨停", "watchBuy": false}, {"code": "000530", "name": "冰山冷热", "grade": "A", "refPrice": 11.52, "prevClose": 11.85, "signals": "满足3条", "note": "昨炸板", "watchBuy": false}, {"code": "002222", "name": "福晶科技", "grade": "A", "refPrice": 50.5, "prevClose": 50.3, "signals": "满足2条", "note": "昨炸板", "watchBuy": false}]}
+{
+ "date": "2026-11-18",
+ "stocks": [
+  {
+   "code": "002897",
+   "name": "意华股份",
+   "grade": "S",
+   "refPrice": 45.66,
+   "prevClose": 45.9,
+   "signals": "5条全满足",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "600619",
+   "name": "海立股份",
+   "grade": "A",
+   "refPrice": 13.5,
+   "prevClose": 13.1,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002983",
+   "name": "芯瑞达",
+   "grade": "A",
+   "refPrice": 24.51,
+   "prevClose": 23.96,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002959",
+   "name": "小熊电器",
+   "grade": "A",
+   "refPrice": 40.0,
+   "prevClose": 39.9,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "000533",
+   "name": "顺钠股份",
+   "grade": "A",
+   "refPrice": 10.11,
+   "prevClose": 10.8,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "603078",
+   "name": "江化微",
+   "grade": "A",
+   "refPrice": 25.4,
+   "prevClose": 24.54,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002331",
+   "name": "皖通科技",
+   "grade": "A",
+   "refPrice": 7.09,
+   "prevClose": 7.24,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002242",
+   "name": "九阳股份",
+   "grade": "A",
+   "refPrice": 32.5,
+   "prevClose": 31.52,
+   "signals": "满足3条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "龙虎榜净卖1.88亿+跌停,机构/江苏路买难敌卖压,提示兑现,次日冲高减仓不补"
+  },
+  {
+   "code": "600410",
+   "name": "华胜天成",
+   "grade": "A",
+   "refPrice": 15.99,
+   "prevClose": 15.29,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "600467",
+   "name": "好当家",
+   "grade": "A",
+   "refPrice": 2.64,
+   "prevClose": 2.75,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002535",
+   "name": "林州重机",
+   "grade": "A",
+   "refPrice": 2.79,
+   "prevClose": 2.86,
+   "signals": "满足3条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "300721",
+   "name": "怡达股份",
+   "grade": "A",
+   "refPrice": 17.21,
+   "prevClose": 17.58,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002425",
+   "name": "凯撒文化",
+   "grade": "A",
+   "refPrice": 4.53,
+   "prevClose": 4.65,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "跌停-9.89%+净卖7017万,游资撤离,坚决兑现止损"
+  },
+  {
+   "code": "002652",
+   "name": "扬子新材",
+   "grade": "A",
+   "refPrice": 4.4,
+   "prevClose": 4.4,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "600770",
+   "name": "综艺股份",
+   "grade": "A",
+   "refPrice": 5.4,
+   "prevClose": 5.53,
+   "signals": "满足2条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002843",
+   "name": "泰嘉股份",
+   "grade": "A",
+   "refPrice": 16.39,
+   "prevClose": 15.76,
+   "signals": "满足3条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "龙虎榜游资混战(净买+268万/-6858万),开源西安+巨龙南路+华鑫上海,溢价待验证,竞价弱则兑现"
+  },
+  {
+   "code": "002861",
+   "name": "瀛通通讯",
+   "grade": "A",
+   "refPrice": 14.47,
+   "prevClose": 14.96,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "断板-7.49%+净卖4695万,机构买难敌卖压,提示兑现不接力"
+  },
+  {
+   "code": "600206",
+   "name": "有研新材",
+   "grade": "A",
+   "refPrice": 40.01,
+   "prevClose": 39.33,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "000628",
+   "name": "高新发展",
+   "grade": "A",
+   "refPrice": 48.72,
+   "prevClose": 48.71,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "000859",
+   "name": "国风新材",
+   "grade": "A",
+   "refPrice": 8.12,
+   "prevClose": 8.12,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "301395",
+   "name": "仁信新材",
+   "grade": "A",
+   "refPrice": 18.0,
+   "prevClose": 18.08,
+   "signals": "满足2条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "688372",
+   "name": "伟测科技",
+   "grade": "A",
+   "refPrice": 90.2,
+   "prevClose": 87.19,
+   "signals": "满足2条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "301421",
+   "name": "波长光电",
+   "grade": "A",
+   "refPrice": 77.54,
+   "prevClose": 78.0,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "601133",
+   "name": "柏诚股份",
+   "grade": "A",
+   "refPrice": 16.91,
+   "prevClose": 16.9,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002889",
+   "name": "东方嘉盛",
+   "grade": "A",
+   "refPrice": 14.91,
+   "prevClose": 15.21,
+   "signals": "满足2条",
+   "note": "昨涨停",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "000530",
+   "name": "冰山冷热",
+   "grade": "A",
+   "refPrice": 11.52,
+   "prevClose": 11.85,
+   "signals": "满足3条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "振幅19%+机构分歧+散户席位,无溢价风险,逢高兑现"
+  },
+  {
+   "code": "002222",
+   "name": "福晶科技",
+   "grade": "A",
+   "refPrice": 50.5,
+   "prevClose": 50.3,
+   "signals": "满足2条",
+   "note": "昨炸板",
+   "watchBuy": false,
+   "dragonNote": "未上榜,按竞价逻辑原策略执行"
+  },
+  {
+   "code": "002578",
+   "name": "闽发铝业",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨金融城南买入(跌停),次日易低开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "002086",
+   "name": "东方海洋",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨金融城南+团结路二买入(跌停),次日易低开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "002584",
+   "name": "西陇科学",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨金融城南+团结路一买入,净卖1.37亿,次日易高开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "000595",
+   "name": "新能股份",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨东环路二+国信浙江互联网买入,次日易高开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "002724",
+   "name": "海洋王",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨金融城南买入(跌停),次日易低开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "920489",
+   "name": "佳先股份",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨团结路二(北交所),次日易高开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "920157",
+   "name": "宇特光电",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨金融城南+昌都(北交所),次日易高开低走,不接力",
+   "watchBuy": false
+  },
+  {
+   "code": "920309",
+   "name": "菊乐股份",
+   "grade": "R",
+   "signals": "龙虎榜散户席位",
+   "note": "拉萨东环路二+金融城南(北交所跌停),次日易低开低走,不接力",
+   "watchBuy": false
+  }
+ ]
+}
